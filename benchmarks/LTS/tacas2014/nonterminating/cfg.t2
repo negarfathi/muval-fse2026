@@ -1,0 +1,37 @@
+START: 100;
+
+FROM: 100;
+    rho_1 := nondet();
+TO: 101;
+
+FROM: 101;
+    assume(rho_1>0);
+TO: 102;
+
+FROM: 101;
+    assume(rho_1<=0);
+TO: 103;
+
+
+FROM: 102; 
+x := x + 100;
+assume(x>100);
+TO: 1; 
+
+FROM: 103; 
+x := x + 200;
+assume(x>100);
+TO: 2;
+
+FROM: 2; 
+x := x + 300;
+assume(x>100);
+TO: 1;
+
+FROM: 1; 
+x := x + 400;
+assume(x>100);
+TO: 2;
+
+
+

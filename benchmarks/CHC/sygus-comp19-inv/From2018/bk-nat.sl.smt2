@@ -1,0 +1,48 @@
+(set-logic HORN)
+
+(declare-fun inv-f (Int Int Int Int Int) Bool)
+(assert (forall ((A Int) (B Int) (C Int) (D Int) (E Int))
+  (let ((a!1 (and (inv-f D C B A E)
+                     (= E 0)
+                     (or (< A 0) (< B 0) (< C 0) (< D 0) (< (+ (- 1) D C A) 0)))))
+       (=> a!1 false))
+    ))
+(assert (forall ((A Int) (B Int) (C Int) (D Int) (E Int))
+  (let ((a!1 (or (and (= C 0) (= E 0)) (and (not (= C 0)) (= E 1))))
+           (a!2 (or (and (= B 0) (= E 0)) (and (not (= B 0)) (= E 1))))
+           (a!3 (or (and (= A 0) (= E 0)) (and (not (= A 0)) (= E 1)))))
+     (let ((a!4 (and (or (and (>= D 1) (= E 0)) (and (< D 1) (= E 1)))
+                     a!1
+                     a!2
+                     a!3)))
+       (=> a!4 (inv-f D C B A E))))
+    ))
+(assert (forall ((A Int)
+         (B Int)
+         (C Int)
+         (D Int)
+         (E Int)
+         (F Int)
+         (G Int)
+         (H Int)
+         (I Int)
+         (J Int))
+  (let ((a!1 (or (and (< D 1) (= E 1)) (and (>= D 1) (= E I))))
+           (a!3 (or (and (< (+ B C) 1) (= E 1)) (and (>= (+ B C) 1) (= E I))))
+           (a!4 (- (- (- (+ 1 J) D) C) B))
+           (a!6 (- (- (- (+ 1 J) H) G) F)))
+     (let ((a!2 (and a!1
+                     (= (- (- G B) A) 0)
+                     (= F 0)
+                     (= (- (+ 1 J) D) 0)
+                     (= (- (+ (- 1) H) C) 0)))
+           (a!5 (and a!3 (= G 0) (= (- (+ (- 1) F) A) 0) (= a!4 0) (= H 0))))
+     (let ((a!7 (or a!2
+                    a!5
+                    (and a!1 (= G 0) (= (+ (- 1) F) 0) (= (- a!6 D) 0) (= H 0)))))
+       (=> (and (inv-f D C B A I) a!7) (inv-f J H G F E)))))
+    ))
+
+
+(check-sat)
+(exit)

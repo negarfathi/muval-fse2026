@@ -1,0 +1,8 @@
+X 1.0 0.0 <= 0.5
+s.t.
+X (n : real) (b : real) : real =mu
+  if n > 0.0 then
+    unif p.
+      p * (unif r. X (n - 1.0) (b + r)) +
+      (1.0 - p) * (unif r. X (n + 1.0) (b - r))
+  else b;

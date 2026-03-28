@@ -1,0 +1,211 @@
+(set-logic HORN)
+
+(declare-fun |main@precall3.split| ( ) Bool)
+(declare-fun |main@postcall2.lr.ph.lr.ph| ( Int Int Int Bool Int ) Bool)
+(declare-fun |main@precall3| ( Bool ) Bool)
+(declare-fun |main@entry| ( Int ) Bool)
+(declare-fun |main@postcall2.lr.ph.us| ( Bool Int Int Int ) Bool)
+(declare-fun |main@postcall2| ( Int Bool Bool Int ) Bool)
+
+(assert
+  (forall ( (A Int) ) 
+    (=>
+      (and
+        true
+      )
+      (main@entry A)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Bool) (E Bool) (F Bool) (G Bool) (H Bool) (I Bool) (J Bool) (K Bool) (L Bool) (M Int) (N Int) (O Int) (P Bool) (Q Int) ) 
+    (=>
+      (and
+        (main@entry C)
+        (and (= E (= O M))
+     (= F (and E D))
+     (= I (not (<= 1 M)))
+     (= J (not (<= M (- 1))))
+     (= K (not (<= M Q)))
+     (= P (and K J))
+     (= A C)
+     (= B C)
+     (= N (+ (- 1) M))
+     (= Q (div N 2))
+     (= F true)
+     (not G)
+     (not H)
+     (not I)
+     (= L true)
+     (= D (not (<= O (- 1)))))
+      )
+      (main@postcall2.lr.ph.lr.ph M N O P Q)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Bool) (F Bool) (G Bool) (H Bool) (I Bool) (J Bool) (K Int) (L Int) (M Int) (N Bool) (O Bool) (P Bool) (Q Bool) (R Bool) ) 
+    (=>
+      (and
+        (main@entry C)
+        (and (= O (not (<= M L)))
+     (= R Q)
+     (= E (not (<= D (- 1))))
+     (= F (= D M))
+     (= G (and F E))
+     (= J (not (<= 1 M)))
+     (= Q (and O N))
+     (= A C)
+     (= K (+ (- 1) M))
+     (= L (div K 2))
+     (= B C)
+     (not P)
+     (= G true)
+     (not H)
+     (not I)
+     (not J)
+     (= N (not (<= M (- 1)))))
+      )
+      (main@precall3 R)
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) (B Int) (C Bool) (D Bool) (E Int) (F Bool) (G Int) (H Int) (I Int) ) 
+    (=>
+      (and
+        (main@postcall2.lr.ph.lr.ph H I B D E)
+        (and (= A (not (= B 0))) (= C (not (<= B 0))) (= G E) (= C true) (= F D))
+      )
+      (main@postcall2.lr.ph.us F G H I)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Bool) (D Bool) (E Int) (F Int) (G Bool) (H Bool) (I Int) ) 
+    (=>
+      (and
+        (main@postcall2.lr.ph.lr.ph F A B D E)
+        (and (= C (not (<= B 0))) (= H (not (= B 0))) (= I E) (not C) (= G D))
+      )
+      (main@postcall2 F G H I)
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) (B Int) (C Bool) (D Bool) (E Int) (F Int) (G Int) (H Bool) (I Bool) (J Bool) (K Bool) (L Int) (M Bool) (N Int) (O Int) (P Int) ) 
+    (=>
+      (and
+        (main@postcall2.lr.ph.us A B O P)
+        (and (= D (<= O G))
+     (= H (not (<= L (- 1))))
+     (= I (not (<= O L)))
+     (= K (and I H))
+     (= E (+ P (* (- 1) G)))
+     (= F (div E 2))
+     (= G (+ 1 B))
+     (= L (+ F G))
+     (= N L)
+     (= A true)
+     (not C)
+     (not D)
+     (= J true)
+     (= M K))
+      )
+      (main@postcall2.lr.ph.us M N O P)
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) (B Int) (C Bool) (D Bool) (E Int) (F Int) (G Int) (H Int) (I Int) (J Int) (K Bool) (L Bool) (M Bool) (N Bool) (O Bool) ) 
+    (=>
+      (and
+        (main@postcall2.lr.ph.us A B J E)
+        (and (= L (not (<= J I)))
+     (= O N)
+     (= D (<= J H))
+     (= N (and L K))
+     (= F (+ E (* (- 1) H)))
+     (= G (div F 2))
+     (= H (+ 1 B))
+     (= I (+ G H))
+     (= A true)
+     (not M)
+     (not C)
+     (not D)
+     (= K (not (<= I (- 1)))))
+      )
+      (main@precall3 O)
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) ) 
+    (=>
+      (and
+        (main@precall3 A)
+        (not A)
+      )
+      main@precall3.split
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) (B Bool) (C Bool) (D Int) (E Int) (F Bool) (G Bool) (H Bool) (I Bool) (J Int) (K Int) (L Bool) (M Bool) (N Int) ) 
+    (=>
+      (and
+        (main@postcall2 K A M E)
+        (and (= C (not (<= 1 E)))
+     (= F (not (<= E (- 1))))
+     (= G (not (<= K J)))
+     (= I (and G F))
+     (= D (+ (- 1) E))
+     (= J (div D 2))
+     (= N J)
+     (= A true)
+     (not B)
+     (not C)
+     (= H true)
+     (= M true)
+     (= L I))
+      )
+      (main@postcall2 K L M N)
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) (B Bool) (C Bool) (D Bool) (E Int) (F Int) (G Int) (H Int) (I Bool) (J Bool) (K Bool) (L Bool) (M Bool) ) 
+    (=>
+      (and
+        (main@postcall2 H A B F)
+        (and (= J (not (<= H G)))
+     (= M L)
+     (= D (not (<= 1 F)))
+     (= L (and J I))
+     (= E (+ (- 1) F))
+     (= G (div E 2))
+     (not K)
+     (= A true)
+     (= B true)
+     (not C)
+     (not D)
+     (= I (not (<= F (- 1)))))
+      )
+      (main@precall3 M)
+    )
+  )
+)
+(assert
+  (forall ( (CHC_COMP_UNUSED Bool) ) 
+    (=>
+      (and
+        main@precall3.split
+        true
+      )
+      false
+    )
+  )
+)
+
+(check-sat)
+(exit)

@@ -1,0 +1,4 @@
+forall (m: int). X (m) (0) s.t.
+X (m: int) (i: int): bool =mu i > m \/ i <= m /\  Y (m) (i) (0);
+Y (m: int) (i: int) (j: int): bool =mu j > m /\ X m (i + 1) \/ j <= m /\ Z (m) (i) (j) (0);
+Z (m: int) (i: int) (j: int) (k: int): bool =mu k > m /\ Y m i (j+1) \/ k <= m /\ Z m i j (k+1);

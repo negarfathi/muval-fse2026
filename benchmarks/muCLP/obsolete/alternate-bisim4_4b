@@ -1,0 +1,195 @@
+;; valid
+
+(imply
+  (and
+    (atom (predapp
+      (nu B ((x1 int) (y1 int) (x2 int) (y2 int))
+        (and
+          (and
+            (forall ((x1' int) (y1' int))
+              (imply
+                (and
+                  (and
+                    (atom (predapp eq (
+                      (x1' int)
+                      (funapp add ((x1 int) (funapp (integer 1) ())))
+                    )))
+                    (atom (predapp eq (
+                      (y1' int)
+                      (y1 int)
+                    )))
+                  )
+                  (atom (predapp leq (
+                    (x1' int)
+                    (y1' int)
+                  )))
+                )
+                (exists ((x2' int) (y2' int))
+                  (and
+                    (and
+                      (and
+                        (atom (predapp eq (
+                          (x2' int)
+                          (funapp add ((x2 int) (funapp (integer 1) ())))
+                        )))
+                        (atom (predapp eq (
+                          (y2' int)
+                          (y2 int)
+                        )))
+                      )
+                      (atom (predapp leq (
+                        (x2' int)
+                        (y2' int)
+                      )))
+                    )
+                    (atom (predapp (B (int int int int)) ((x1' int) (y1' int) (x2' int) (y2' int))))
+                  )
+                )
+              )
+            )
+            (forall ((x1' int) (y1' int))
+              (imply
+                (and
+                  (and
+                    (atom (predapp eq (
+                      (x1' int)
+                      (funapp sub ((x1 int) (funapp (integer 1) ())))
+                    )))
+                    (atom (predapp eq (
+                      (y1' int)
+                      (y1 int)
+                    )))
+                  )
+                  (atom (predapp geq (
+                    (x1' int)
+                    (y1' int)
+                  )))
+                )
+                (exists ((x2' int) (y2' int))
+                  (and
+                    (and
+                      (and
+                        (atom (predapp eq (
+                          (x2' int)
+                          (funapp sub ((x2 int) (funapp (integer 1) ())))
+                        )))
+                        (atom (predapp eq (
+                          (y2' int)
+                          (y2 int)
+                        )))
+                      )
+                      (atom (predapp geq (
+                        (x2' int)
+                        (y2' int)
+                      )))
+                    )
+                    (atom (predapp (B (int int int int)) ((x1' int) (y1' int) (x2' int) (y2' int))))
+                  )
+                )
+              )
+            )
+          )
+          (and
+            (forall ((x2' int) (y2' int))
+              (imply
+                (and
+                  (and
+                    (atom (predapp eq (
+                      (x2' int)
+                      (funapp add ((x2 int) (funapp (integer 1) ())))
+                    )))
+                    (atom (predapp eq (
+                      (y2' int)
+                      (y2 int)
+                    )))
+                  )
+                  (atom (predapp leq (
+                    (x2' int)
+                    (y2' int)
+                  )))
+                )
+                (exists ((x1' int) (y1' int))
+                  (and
+                    (and
+                      (and
+                        (atom (predapp eq (
+                          (x1' int)
+                          (funapp add ((x1 int) (funapp (integer 1) ())))
+                        )))
+                        (atom (predapp eq (
+                          (y1' int)
+                          (y1 int)
+                        )))
+                      )
+                      (atom (predapp leq (
+                        (x1' int)
+                        (y1' int)
+                      )))
+                    )
+                    (atom (predapp (B (int int int int)) ((x1' int) (y1' int) (x2' int) (y2' int))))
+                  )
+                )
+              )
+            )
+            (forall ((x2' int) (y2' int))
+              (imply
+                (and
+                  (and
+                    (atom (predapp eq (
+                      (x2' int)
+                      (funapp sub ((x2 int) (funapp (integer 1) ())))
+                    )))
+                    (atom (predapp eq (
+                      (y2' int)
+                      (y2 int)
+                    )))
+                  )
+                  (atom (predapp geq (
+                    (x2' int)
+                    (y2' int)
+                  )))
+                )
+                (exists ((x1' int) (y1' int))
+                  (and
+                    (and
+                      (and
+                        (atom (predapp eq (
+                          (x1' int)
+                          (funapp sub ((x1 int) (funapp (integer 1) ())))
+                        )))
+                        (atom (predapp eq (
+                          (y1' int)
+                          (y1 int)
+                        )))
+                      )
+                      (atom (predapp geq (
+                        (x1' int)
+                        (y1' int)
+                      )))
+                    )
+                    (atom (predapp (B (int int int int)) ((x1' int) (y1' int) (x2' int) (y2' int))))
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+      ((x1 int) (y1 int) (x2 int) (y2 int))
+    ))
+    (and
+      (atom (predapp geq (
+        (y1 int)
+        (x1 int)
+      )))
+      (atom (predapp geq (
+        (y2 int)
+        (x2 int)
+      )))
+    )
+  )
+  (atom (predapp eq (
+    (funapp sub ((y1 int) (x1 int)))
+    (funapp sub ((y2 int) (x2 int)))
+  )))
+)

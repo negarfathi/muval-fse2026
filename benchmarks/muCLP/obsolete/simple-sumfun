@@ -1,0 +1,21 @@
+;; (mu X(x, z). (x=0 /\ z=0) \/
+;;              (x>0 /\ z=x + w /\ X(x-1, w))(n, r) => r >= n
+(imply
+ (atom
+  (predapp
+   (mu X ((x int) (z int))
+     (or
+      (and
+       (atom (predapp eq ((x int) (funapp (integer 0) ()))))
+       (atom (predapp eq ((z int) (funapp (integer 0) ())))))
+      (and
+       (atom (predapp gt ((x int) (funapp (integer 0) ()))))
+       (and
+        (atom
+	 (predapp eq
+	  ((z int) (funapp add ((x int) (w int))))))
+	(atom
+	 (predapp (X (int int))
+	  ((funapp sub ((x int) (funapp (integer 1) ()))) (w int))))))))
+   ((n int) (r int))))
+ (atom (predapp geq ((r int) (n int)))))

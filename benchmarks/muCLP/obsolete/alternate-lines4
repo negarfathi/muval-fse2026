@@ -1,0 +1,40 @@
+;; valid
+
+;; y = ax + b
+;; y = cx + d
+;; forall a, b, c, d. a > b => exists x >= 0. forall x'. x > x' => ax' + b > cx' + d
+
+;; forall a, b, c, d. a > b => f a b c d
+;; F a b c d =mu G a b c d \/ F a b (c + a) (d + b)
+;; G a b c d =nu c > d /\ G a b (c + a) (d + b)
+
+(imply
+  (atom (predapp gt ((a int) (b int))))
+  (atom (predapp
+    (mu F ((a int) (b int) (c int) (d int))
+      (or
+        (atom (predapp
+          (nu G ((a int) (b int) (c int) (d int))
+            (and
+              (atom (predapp gt ((c int) (d int))))
+              (atom (predapp (G (int int int int)) (
+                (a int)
+                (b int)
+                (funapp add ((c int) (a int)))
+                (funapp add ((d int) (b int)))
+              )))
+            )
+          )
+          ((a int) (b int) (c int) (d int))
+        ))
+        (atom (predapp (F (int int int int)) (
+          (a int)
+          (b int)
+          (funapp add ((c int) (a int)))
+          (funapp add ((d int) (b int)))
+        )))
+      )
+    )
+    ((a int) (b int) (c int) (d int))
+  ))
+)

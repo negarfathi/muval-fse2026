@@ -1,0 +1,25 @@
+;; valid
+;; (nu F(x).(mu G(y).F(y-1) /\ (y<0 => G(y+1))))(x))(n)
+(atom (predapp
+  (nu F ((x int))
+    (atom (predapp
+      (mu G ((y int))
+        (and
+          (atom (predapp
+            (F (int))
+            ((funapp sub ((y int) (funapp (integer 1) ()))))
+          ))
+          (imply
+            (atom (predapp lt ((y int) (funapp (integer 0) ()))))
+            (atom (predapp
+              (G (int))
+              ((funapp add ((y int) (funapp (integer 1) ()))))
+            ))
+          )
+        )
+      )
+      ((x int))
+    ))
+  )
+  ((n int))
+))

@@ -1,0 +1,230 @@
+;; forall x. F1 x
+;;
+;; H1 x =nu I1 x /\ (x < 0 => F1 x) /\ (x >= 0 => H2 x)
+;; H2 x =nu I2 x /\ H2 x
+;; F1 x =nu G1 x /\ (x <= 5 => F2 x) /\ (x <= 5 => F1 (x + 1)) /\ (x > 5 => F1 (x + 1))
+;; F2 x =nu G2 x /\ (x <= 2 => F1 x) /\ (x > 2 => F2 (x - 1))
+;; I1 x =mu x >= 1 \/ (x < 0 => G1 x) /\ (x >= 0 => I2 x)
+;; I2 x =mu x >= 1 \/ I2 x
+;; G1 x =mu x >= 1 \/ (x <= 5 /\ G2 x) \/ (x <= 5 => G1 (x + 1)) /\ (x > 5 => G1 (x + 1))
+;; G2 x =mu x >= 1 \/ (x <= 2 => G1 x) /\ (x > 2 => G2 (x - 1))
+
+(atom (predapp
+  (nu H1 ((x int))
+    (and
+      (atom (predapp
+        (mu I1 ((x int))
+          (or
+            (atom (predapp geq ((x int) 1)))
+            (and
+              (imply
+                (atom (predapp lt ((x int) 0)))
+                (atom (predapp
+                  (mu G1 ((x int))
+                    (or
+                      (atom (predapp geq ((x int) 1)))
+                      (or
+                        (and
+                          (atom (predapp leq ((x int) 5)))
+                          (atom (predapp
+                            (mu G2 ((x int))
+                              (or
+                                (atom (predapp geq ((x int) 1)))
+                                (and
+                                  (imply
+                                    (atom (predapp leq ((x int) 2)))
+                                    (atom (predapp (G1 (int)) ((x int))))
+                                  )
+                                  (imply
+                                    (atom (predapp gt ((x int) 2)))
+                                    (atom (predapp (G2 (int)) ((funapp sub ((x int) 1)))))
+                                  )
+                                )
+                              )
+                            )
+                            ((x int))
+                          ))
+                        )
+                        (and
+                          (imply
+                            (atom (predapp leq ((x int) 5)))
+                            (atom (predapp (G1 (int)) ((funapp add ((x int) 1)))))
+                          )
+                          (imply
+                            (atom (predapp gt ((x int) 5)))
+                            (atom (predapp (G1 (int)) ((funapp add ((x int) 1)))))
+                          )
+                        )
+                      )
+                    )
+                  )
+                  ((x int))
+                ))
+              )
+              (imply
+                (atom (predapp geq ((x int) 0)))
+                (atom (predapp
+                  (mu I2 ((x int))
+                    (or
+                      (atom (predapp geq ((x int) 1)))
+                      (atom (predapp (I2 (int)) ((x int))))
+                    )
+                  )
+                  ((x int))
+                ))
+              )
+            )
+          )
+        )
+        ((x int))
+      ))
+      (and
+        (imply
+          (atom (predapp lt ((x int) 0)))
+          (atom (predapp
+            (nu F1 ((x int))
+              (and
+                (atom (predapp
+                  (mu G1 ((x int))
+                    (or
+                      (atom (predapp geq ((x int) 1)))
+                      (or
+                        (and
+                          (atom (predapp leq ((x int) 5)))
+                          (atom (predapp
+                            (mu G2 ((x int))
+                              (or
+                                (atom (predapp geq ((x int) 1)))
+                                (and
+                                  (imply
+                                    (atom (predapp leq ((x int) 2)))
+                                    (atom (predapp (G1 (int)) ((x int))))
+                                  )
+                                  (imply
+                                    (atom (predapp gt ((x int) 2)))
+                                    (atom (predapp (G2 (int)) ((funapp sub ((x int) 1)))))
+                                  )
+                                )
+                              )
+                            )
+                            ((x int))
+                          ))
+                        )
+                        (and
+                          (imply
+                            (atom (predapp leq ((x int) 5)))
+                            (atom (predapp (G1 (int)) ((funapp add ((x int) 1)))))
+                          )
+                          (imply
+                            (atom (predapp gt ((x int) 5)))
+                            (atom (predapp (G1 (int)) ((funapp add ((x int) 1)))))
+                          )
+                        )
+                      )
+                    )
+                  )
+                  ((x int))
+                ))
+                (and
+                  (imply
+                    (atom (predapp leq ((x int) 5)))
+                    (atom (predapp
+                      (nu F2 ((x int))
+                        (and
+                          (atom (predapp
+                            (mu G2 ((x int))
+                              (or
+                                (atom (predapp geq ((x int) 1)))
+                                (and
+                                  (imply
+                                    (atom (predapp leq ((x int) 2)))
+                                    (atom (predapp
+                                      (mu G1 ((x int))
+                                        (or
+                                          (atom (predapp geq ((x int) 1)))
+                                          (or
+                                            (and
+                                              (atom (predapp leq ((x int) 5)))
+                                              (atom (predapp (G2 (int)) ((x int))))
+                                            )
+                                            (and
+                                              (imply
+                                                (atom (predapp leq ((x int) 5)))
+                                                (atom (predapp (G1 (int)) ((funapp add ((x int) 1)))))
+                                              )
+                                              (imply
+                                                (atom (predapp gt ((x int) 5)))
+                                                (atom (predapp (G1 (int)) ((funapp add ((x int) 1)))))
+                                              )
+                                            )
+                                          )
+                                        )
+                                      )
+                                      ((x int))
+                                    ))
+                                  )
+                                  (imply
+                                    (atom (predapp gt ((x int) 2)))
+                                    (atom (predapp (G2 (int)) ((funapp sub ((x int) 1)))))
+                                  )
+                                )
+                              )
+                            )
+                            ((x int))
+                          ))
+                          (and
+                            (imply
+                              (atom (predapp leq ((x int) 2)))
+                              (atom (predapp (F1 (int)) ((x int))))
+                            )
+                            (imply
+                              (atom (predapp gt ((x int) 2)))
+                              (atom (predapp (F2 (int)) ((funapp sub ((x int) 1)))))
+                            )
+                          )
+                        )
+                      )
+                      ((x int))
+                    ))
+                  )
+                  (and
+                    (imply
+                      (atom (predapp leq ((x int) 5)))
+                      (atom (predapp (F1 (int)) ((funapp add ((x int) 1)))))
+                    )
+                    (imply
+                      (atom (predapp gt ((x int) 5)))
+                      (atom (predapp (F1 (int)) ((funapp add ((x int) 1)))))
+                    )
+                  )
+                )
+              )
+            )
+            ((x int))
+          ))
+        )
+        (imply
+          (atom (predapp geq ((x int) 0)))
+          (atom (predapp
+            (nu H2 ((x int))
+              (and
+                (atom (predapp
+                  (mu I2 ((x int))
+                    (or
+                      (atom (predapp geq ((x int) 1)))
+                      (atom (predapp (I2 (int)) ((x int))))
+                    )
+                  )
+                  ((x int))
+                ))
+                (atom (predapp (H2 (int)) ((x int))))
+              )
+            )
+            ((x int))
+          ))
+        )
+      )
+    )
+  )
+  ((x int))
+))

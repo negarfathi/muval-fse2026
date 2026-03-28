@@ -1,0 +1,44 @@
+LGnuq0 (0)
+s.t.
+LGmuq0 (x: int): bool =mu
+   (forall (x': int).
+      x = 0 /\ (x' != 0) => ( //A break
+           (exists (x'': int). x'' = x' - 1 /\ LGmuq1 x'')         //E decr
+        \/ (exists (x'': int). x'' = x' + 1 /\ LGmuq1 x'')         //E incr
+        \/ (exists (x'': int). x' = 0 /\ x'' = 0 /\ LGnuq0 x''))   //E restore
+   )
+   /\
+   (forall (x': int).
+      (x != 0) /\ x' = x => ( //A skip
+           (exists (x'': int). x'' = x' - 1 /\ LGmuq1 x'')         //E decr
+        \/ (exists (x'': int). x'' = x' + 1 /\ LGmuq1 x'')         //E incr
+        \/ (exists (x'': int). x' = 0 /\ x'' = 0 /\ LGnuq0 x''))   //E restore
+   );
+LGnuq0 (x: int): bool =nu
+   (forall (x': int).
+      x = 0 /\ (x' != 0) => ( //A break
+           (exists (x'': int). x'' = x' - 1 /\ LGmuq1 x'')         //E decr
+        \/ (exists (x'': int). x'' = x' + 1 /\ LGmuq1 x'')         //E incr
+        \/ (exists (x'': int). x' = 0 /\ x'' = 0 /\ LGnuq0 x''))   //E restore
+   )
+   /\
+   (forall (x': int).
+      (x != 0) /\ x' = x => ( //A skip
+           (exists (x'': int). x'' = x' - 1 /\ LGmuq1 x'')         //E decr
+        \/ (exists (x'': int). x'' = x' + 1 /\ LGmuq1 x'')         //E incr
+        \/ (exists (x'': int). x' = 0 /\ x'' = 0 /\ LGnuq0 x''))   //E restore
+   );
+LGmuq1 (x: int): bool =mu
+   (forall (x': int).
+      x' = x => ( //A skip
+           (exists (x'': int). x'' = x' - 1 /\ LGmuq1 x'')         //E decr
+        \/ (exists (x'': int). x'' = x' + 1 /\ LGmuq1 x'')         //E incr
+        \/ (exists (x'': int). x' = 0 /\ x'' = 0 /\ LGnuq0 x''))   //E restore
+   );
+LGnuq1 (x: int): bool =nu
+   (forall (x': int).
+      x' = x => ( //A skip
+           (exists (x'': int). x'' = x' - 1 /\ LGmuq1 x'')         //E decr
+        \/ (exists (x'': int). x'' = x' + 1 /\ LGmuq1 x'')         //E incr
+        \/ (exists (x'': int). x' = 0 /\ x'' = 0 /\ LGnuq0 x''))   //E restore
+   );

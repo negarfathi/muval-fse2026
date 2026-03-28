@@ -1,0 +1,6 @@
+X 10.0 >= 0.76
+s.t.
+X (x : real) : real =mu
+  if x >= 0.0 then
+    if x <= 100 then unif r. X (x + r * 3.0 - 2.0) else unif r. X (x + r * 3.0 - 1.0)
+  else 1.0;

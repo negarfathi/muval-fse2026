@@ -1,0 +1,11 @@
+; --full-saturate-quant --inst-when=full-last-call --inst-no-entail --term-db-mode=relevant --random-seed=1 --lang=smt2 --tlimit 694
+;(set-option :produce-unsat-cores true)
+(set-logic ALL_SUPPORTED)
+(declare-sort A$ 0)
+(declare-codatatypes () ((A_llist$ (lNil$) (lCons$ (lhd$ A$) (ltl$ A_llist$)))))
+(declare-fun xs$ () A_llist$)
+(declare-fun ys$ () A_llist$)
+(assert (! (not (= xs$ ys$)) :named a0))
+(assert (! (= ys$ xs$) :named a1))
+(check-sat)
+;(get-unsat-core)

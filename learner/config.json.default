@@ -1,0 +1,21 @@
+{
+    "version":          [0,2,0],
+    "mode":             "run",
+    "bench list":       ["benchmarks/sygus-comp/comp/2018/Inv_Track/fib_20.sl"],
+    "log directry":     "/home/tsukada/log",
+    "number of epochs": 3,
+    "agent": {
+        "kind":             "Monte Carlo",
+        "input dir":        "/home/tsukada/log/a20201114-030005/t20201114-0300050002",
+        "output dir":       null,
+        "learn":            true,
+        "alpha":            0.1,
+        "epsilon":          0.5,
+        "gamma":            1.0
+    },
+    "prover": {
+        "command":  ["./_build/default/main.exe", "-c", "./config/solver/pcsat_rl.json", "-p", "sygus"],
+        "timeout":  10.0
+    },
+    "auto restart":     null
+}

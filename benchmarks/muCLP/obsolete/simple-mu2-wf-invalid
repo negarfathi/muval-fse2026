@@ -1,0 +1,19 @@
+;;(mu X(x,y). x+y=0 or X(x-1,y))(n,m)
+ (atom (predapp
+        (mu X ((x int) (y int))
+         (or
+          (atom (predapp
+                 eq
+                 (
+                  (funapp add ((x int) (y int)))
+                  (funapp (integer 0) ())
+                 )))
+          (atom (predapp
+                 (X (int int))
+                 ((funapp sub ((x int) (funapp (integer 1) ()))
+		 ) (y int) )
+	 	 ))))
+        ((n int) (m int))
+       )
+ )
+

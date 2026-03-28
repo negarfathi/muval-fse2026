@@ -1,0 +1,5 @@
+forall (x : real). (x > 0.0 and x < 1.0) => X x >= 0.5
+s.t.
+X (x : real) : real =mu if x < 1.0 then X (2.0 * x) else Y x;
+Y (x : real) : real =mu 0.5 * Z + 0.5 * 1.0;
+Z : real =mu Z;

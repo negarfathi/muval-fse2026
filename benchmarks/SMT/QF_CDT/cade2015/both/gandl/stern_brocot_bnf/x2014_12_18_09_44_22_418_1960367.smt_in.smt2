@@ -1,0 +1,12 @@
+; --full-saturate-quant --inst-when=full-last-call --inst-no-entail --term-db-mode=relevant --random-seed=1 --lang=smt2 --tlimit 288
+;(set-option :produce-unsat-cores true)
+(set-logic ALL_SUPPORTED)
+(declare-sort A$ 0)
+(declare-codatatypes () ((A_tree$ (node$ (root$ A$) (left$ A_tree$) (right$ A_tree$)))))
+(declare-fun t$ () A_tree$)
+(declare-fun t$a () A_tree$)
+(declare-fun plus$ (A_tree$ A_tree$) A_tree$)
+(declare-fun plus$a (A$ A$) A$)
+(assert (! (not (= (root$ (plus$ t$ t$a)) (plus$a (root$ t$) (root$ t$a)))) :named a0))
+(check-sat)
+;(get-unsat-core)

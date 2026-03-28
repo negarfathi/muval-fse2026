@@ -1,0 +1,11 @@
+[
+    "ZundaSat",
+    {
+        "dim_reduction": false,
+        "verbose": false,
+        "br_choice": [
+            "VSIDS",
+            256
+        ]
+    }
+]

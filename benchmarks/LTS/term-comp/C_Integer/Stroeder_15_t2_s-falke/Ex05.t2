@@ -1,0 +1,12 @@
+///*** 1_main ***///
+START: 1;
+
+FROM: 1;
+TO: 2;
+FROM: 2;
+  kittel_old__v_call := v_call;
+  nondef.0 := nondet();
+  v_call := nondef.0;
+TO: 3;
+FROM: 3;
+TO: 3;

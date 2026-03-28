@@ -1,0 +1,27 @@
+;; n >= 0 => (mu X(x). x=0 or X(x-1))(n)
+(imply
+ (atom (predapp
+        geq (
+          (n int)
+          (funapp (integer 0) ())
+          )))
+ (atom (predapp
+        (mu X ((x int))
+         (or
+          (atom (predapp
+                 eq
+                 (
+                  (x int)
+                  (funapp (integer 0) ())
+                 )))
+          (atom (predapp
+                 (X (int))
+                 ((funapp
+                   sub
+                   (
+                    (x int)
+                    (funapp (integer 1) ())
+                   )))))))
+        ((n int))
+       )))
+

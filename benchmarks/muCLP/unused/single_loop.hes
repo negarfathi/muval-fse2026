@@ -1,0 +1,3 @@
+forall (n: int). X n
+s.t.
+X (x: int): bool =mu x <= 0 \/ x > 0 /\  X (x - 1);

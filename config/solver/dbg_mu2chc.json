@@ -1,0 +1,18 @@
+[
+    "Mu2CHC",
+    {
+        "optimizer": [
+            "Filename",
+            "./config/muval/optimizer/dbg_enable.json"
+        ],
+        "qelim": {
+            "mode": [
+                "Nu",
+                100
+            ],
+            "verbose": true
+        },
+        "coe": null,
+        "verbose": true
+    }
+]

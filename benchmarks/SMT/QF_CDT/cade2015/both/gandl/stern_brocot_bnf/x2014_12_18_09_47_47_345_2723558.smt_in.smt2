@@ -1,0 +1,13 @@
+; --full-saturate-quant --inst-when=full-last-call --inst-no-entail --term-db-mode=relevant --random-seed=1 --lang=smt2 --tlimit 716
+;(set-option :produce-unsat-cores true)
+(set-logic ALL_SUPPORTED)
+(declare-sort A$ 0)
+(declare-codatatypes () ((A_stream$ (sCons$ (shd$ A$) (stl$ A_stream$)))))
+(declare-fun a$ () A_stream$)
+(declare-fun b$ () A_stream$)
+(declare-fun c$ () A_stream$)
+(declare-fun plus$ (A_stream$ A_stream$) A_stream$)
+(declare-fun minus$ (A_stream$ A_stream$) A_stream$)
+(assert (! (not (= (minus$ (plus$ a$ b$) (plus$ a$ c$)) (minus$ b$ c$))) :named a0))
+(check-sat)
+;(get-unsat-core)

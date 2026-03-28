@@ -1,0 +1,12 @@
+SG 0 0 0 0 0
+s.t.
+SG (b0: real) (b1: real) (b2: real) (b3: real) (b4: real): bool
+  =nu b0 <= c /\ b1 <= c /\ b2 <= c /\ b3 <= c /\ b4 <= c /\
+      (forall (b0': real) (b1': real) (b2': real) (b3': real) (b4': real).
+        1+b0+b1+b2+b3+b4 != b0'+b1'+b2'+b3'+b4' \/
+        b0 <= c /\ b1 <= c /\ b2 <= c /\ b3 <= c /\ b4 <= c /\
+        (SG 0 0 b2' b3' b4' \/
+         SG b0' 0 0 b3' b4' \/
+         SG b0' b1' 0 0 b4' \/
+         SG b0' b1' b2' 0 0 \/
+         SG 0 b1' b2' b3' 0));

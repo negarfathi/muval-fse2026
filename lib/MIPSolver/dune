@@ -1,0 +1,8 @@
+(library
+ (name MIPSolver)
+ (public_name CoAR.MIPSolver)
+ (preprocess
+  (pps ppx_deriving_yojson))
+ (libraries core lp lp-glpk lp-gurobi CoAR.ast CoAR.common CoAR.MIP)
+ (modules gurobiInterface config solver)
+ (synopsis "An MIP solver based on ocaml-lp"))

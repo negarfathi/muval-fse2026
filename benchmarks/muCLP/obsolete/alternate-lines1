@@ -1,0 +1,33 @@
+;; valid
+
+;; y = 2x + a
+;; y = x + b
+;; forall a, b. exists x >= 0. forall x'. x > x' => 2x' + a > x' + b
+
+;; forall a, b. f a b
+;; F a b =mu G a b \/ F (a + 2) (b + 1)
+;; G a b =nu a > b /\ G (a + 2) (b + 1)
+
+(atom (predapp
+  (mu F ((a int) (b int))
+    (or
+      (atom (predapp
+        (nu G ((a int) (b int))
+          (and
+            (atom (predapp gt ((a int) (b int))))
+            (atom (predapp (G (int int)) (
+              (funapp add ((a int) (funapp (integer 2) ())))
+              (funapp add ((b int) (funapp (integer 1) ())))
+            )))
+          )
+        )
+        ((a int) (b int))
+      ))
+      (atom (predapp (F (int int)) (
+        (funapp add ((a int) (funapp (integer 2) ())))
+        (funapp add ((b int) (funapp (integer 1) ())))
+      )))
+    )
+  )
+  ((n int) (m int))
+))

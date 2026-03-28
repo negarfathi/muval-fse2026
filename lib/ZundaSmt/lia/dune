@@ -1,0 +1,8 @@
+(library
+ (name lia)
+ (public_name CoAR.ZundaSmt.lia)
+ (preprocess
+  (pps ppx_deriving_yojson))
+ (libraries minisat z3 core CoAR.Z3Smt CoAR.SATSolver CoAR.SAT CoAR.SMT)
+ (modules solver)
+ (synopsis "An LIA theory solver"))

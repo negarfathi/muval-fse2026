@@ -1,0 +1,23 @@
+;; valid
+
+;; exists n. F(n)
+;; F x =nu x > 50 /\ exists y. F (x * y)
+
+(exists ((n int))
+  (atom (predapp
+    (nu F ((x int))
+      (and
+        (atom (predapp gt (
+          (x int)
+          (funapp (integer 50) ())
+        )))
+        (exists ((y int))
+          (atom (predapp (F (int)) (
+            (funapp mult ((x int) (y int)))
+          )))
+        )
+      )
+    )
+    ((n int))
+  ))
+)

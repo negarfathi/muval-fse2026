@@ -1,0 +1,64 @@
+;; valid
+
+;; A infinitely occurs in
+;; let f n m =
+;;   if n < m then
+;;     A; f (n + 1) m
+;;   else
+;;     forall l. l >= 1 => f n (l + 1)
+
+;; forall n, m. F n m
+;; F n m =nu (n < m => F (n + 1) m) /\ (n >= m => forall l. l >= 1 => G n (m + l))
+;; G n m =mu (n < m => F (n + 1) m) /\ (n >= m => forall l. l >= 1 => G n (m + l))
+
+(atom (predapp
+  (nu F ((n int) (m int))
+    (and
+      (imply
+        (atom (predapp lt ((n int) (m int))))
+        (atom (predapp (F (int int)) (
+          (funapp add ((n int) (funapp (integer 1) ())))
+          (m int)
+        )))
+      )
+      (imply
+        (atom (predapp geq ((n int) (m int))))
+        (forall ((l int))
+          (imply
+            (atom (predapp geq ((l int) (funapp (integer 1) ()))))
+            (atom (predapp
+              (mu G ((n int) (m int))
+                (and
+                  (imply
+                    (atom (predapp lt ((n int) (m int))))
+                    (atom (predapp (F (int int)) (
+                      (funapp add ((n int) (funapp (integer 1) ())))
+                      (m int)
+                    )))
+                  )
+                  (imply
+                    (atom (predapp geq ((n int) (m int))))
+                    (forall ((l int))
+                      (imply
+                        (atom (predapp geq ((l int) (funapp (integer 1) ()))))
+                        (atom (predapp (G (int int)) (
+                          (n int)
+                          (funapp add ((m int) (l int)))
+                        )))
+                      )
+                    )
+                  )
+                )
+              )
+              (
+                (n int)
+                (funapp add ((m int) (l int)))
+              )
+            ))
+          )
+        )
+      )
+    )
+  )
+  ((n int) (m int))
+))

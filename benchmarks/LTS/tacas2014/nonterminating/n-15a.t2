@@ -1,0 +1,70 @@
+START: 300;
+CUTPOINT: 300;
+
+FROM: 100;
+    rho_1 := nondet();
+TO: 101;
+
+FROM: 101;
+    assume(rho_1>0);
+TO: 110;
+
+FROM: 110;
+    rho_2 := nondet();
+TO: 111;
+
+FROM: 111;
+    assume(rho_2>0);
+TO: 112;
+
+FROM: 111;
+    assume(rho_2<=0);
+TO: 113;
+
+FROM: 101;
+    assume(rho_1<=0);
+TO: 120;
+
+FROM: 120;
+    rho_2 := nondet();
+TO: 121;
+
+FROM: 121;
+    assume(rho_3>0);
+TO: 122;
+
+FROM: 121;
+    assume(rho_3<=0);
+TO: 123;
+
+FROM: 112;
+AT(6,"n-15a.c ")  x_5 := -1+x_5;
+  assume(x_5==13);
+AT(7,"n-15a.c ")  x_5 := nondet();
+  assume(0<=-1-x_5);
+AT(1,"n-15a.c ")  Result_4 := nondet();
+TO: 1;
+
+FROM: 113;
+AT(6,"n-15a.c ")  x_5 := -1+x_5;
+  assume(x_5==13);
+AT(7,"n-15a.c ")  x_5 := nondet();
+  assume(-1-x_5<0);
+TO: 100;
+
+FROM: 122;
+AT(6,"n-15a.c ")  x_5 := -1+x_5;
+  assume(x_5!=13);
+  assume(0<=-1-x_5);
+AT(1,"n-15a.c ")  Result_4 := nondet();
+TO: 1;
+
+FROM: 123;
+AT(6,"n-15a.c ")  x_5 := -1+x_5;
+  assume(x_5!=13);
+  assume(-1-x_5<0);
+TO: 100;
+
+FROM: 300;
+TO: 100;
+

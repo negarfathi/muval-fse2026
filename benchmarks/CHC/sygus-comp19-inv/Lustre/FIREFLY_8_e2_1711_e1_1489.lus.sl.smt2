@@ -1,0 +1,428 @@
+(set-logic HORN)
+
+(declare-fun str_invariant
+             (Bool
+              Bool
+              Bool
+              Bool
+              Bool
+              Bool
+              Bool
+              Bool
+              Int
+              Bool
+              Bool
+              Int
+              Int
+              Int
+              Int
+              Bool
+              Bool
+              Bool
+              Bool
+              Int
+              Bool
+              Bool)
+             Bool)
+(assert (forall ((A Bool)
+         (B Bool)
+         (C Int)
+         (D Bool)
+         (E Bool)
+         (F Bool)
+         (G Bool)
+         (H Int)
+         (I Int)
+         (J Int)
+         (K Int)
+         (L Bool)
+         (M Bool)
+         (N Int)
+         (O Bool)
+         (P Bool)
+         (Q Bool)
+         (R Bool)
+         (S Bool)
+         (T Bool)
+         (U Bool)
+         (V Bool))
+  (=> (and (str_invariant V U T S R Q P O N M L K J I H G F E D C B A)
+              (not (= M true)))
+         false)
+    ))
+(assert (forall ((A Bool)
+         (B Bool)
+         (C Int)
+         (D Bool)
+         (E Bool)
+         (F Bool)
+         (G Bool)
+         (H Int)
+         (I Int)
+         (J Int)
+         (K Int)
+         (L Bool)
+         (M Bool)
+         (N Int)
+         (O Bool)
+         (P Bool)
+         (Q Bool)
+         (R Bool)
+         (S Bool)
+         (T Bool)
+         (U Bool)
+         (V Bool))
+  (let ((a!1 (or (or (= V true) (= U true)) (= T true)))
+           (a!5 (and (and (not (= V true)) (not (= U true))) (not (= T true))))
+           (a!8 (and (and (not (= V true)) (not (= U true)))
+                     (= T true)
+                     (not (= S true))
+                     (not (= R true))
+                     (not (= Q true))
+                     (not (= P true))
+                     (not (= O true))))
+           (a!12 (or (and (= G true) (>= N 0) (>= (- 4 N) 0)) (not (= F true)))))
+     (let ((a!2 (or (or (or a!1 (= S true)) (= R true)) (= Q true)))
+           (a!3 (or (or (or a!1 (= S true)) (= R true))
+                    (not (= Q true))
+                    (= P true)
+                    (= O true)))
+           (a!6 (and (and a!5 (not (= S true))) (not (= R true))))
+           (a!9 (and (and a!5 (not (= S true)))
+                     (= R true)
+                     (not (= Q true))
+                     (not (= P true))
+                     (not (= O true)))))
+     (let ((a!4 (and (or (or a!2 (= P true)) (= O true))
+                     (or (not (= V true))
+                         (= U true)
+                         (= T true)
+                         (= S true)
+                         (= R true)
+                         (= Q true)
+                         (= P true)
+                         (= O true))
+                     (or (= V true)
+                         (not (= U true))
+                         (= T true)
+                         (= S true)
+                         (= R true)
+                         (= Q true)
+                         (= P true)
+                         (= O true))
+                     (or (or (= V true) (= U true))
+                         (not (= T true))
+                         (= S true)
+                         (= R true)
+                         (= Q true)
+                         (= P true)
+                         (= O true))
+                     (or a!1
+                         (not (= S true))
+                         (= R true)
+                         (= Q true)
+                         (= P true)
+                         (= O true))
+                     (or (or a!1 (= S true))
+                         (not (= R true))
+                         (= Q true)
+                         (= P true)
+                         (= O true))
+                     a!3
+                     (or a!2 (not (= P true)) (= O true))
+                     (or (or a!2 (= P true)) (not (= O true)))))
+           (a!7 (and (and a!6 (not (= Q true))) (not (= P true))))
+           (a!10 (and (and a!6 (not (= Q true))) (= P true) (not (= O true)))))
+     (let ((a!11 (or (not (= G true))
+                     (and a!7 (not (= O true)))
+                     (and (= V true)
+                          (not (= U true))
+                          (not (= T true))
+                          (not (= S true))
+                          (not (= R true))
+                          (not (= Q true))
+                          (not (= P true))
+                          (not (= O true)))
+                     (and (not (= V true))
+                          (= U true)
+                          (not (= T true))
+                          (not (= S true))
+                          (not (= R true))
+                          (not (= Q true))
+                          (not (= P true))
+                          (not (= O true)))
+                     a!8
+                     (and a!5
+                          (= S true)
+                          (not (= R true))
+                          (not (= Q true))
+                          (not (= P true))
+                          (not (= O true)))
+                     a!9
+                     (and a!6 (= Q true) (not (= P true)) (not (= O true)))
+                     a!10
+                     (and a!7 (= O true)))))
+     (let ((a!13 (and (= (- C N) 0)
+                      (or (not (= E true)) (>= K 0) (not (= M true)))
+                      (or (= F true) (not (= E true)))
+                      (= H 0)
+                      (= I 0)
+                      (= J 0)
+                      (= (- K C) 0)
+                      (or (and (= E true) (< K 0)) (= M true))
+                      (or (= G true) a!4)
+                      (or (not (= F true)) (= E true))
+                      (= D true)
+                      a!11
+                      (= B true)
+                      a!12
+                      (= A true)
+                      (or (not (= G true)) (< N 0) (< (- 4 N) 0) (= F true))
+                      (= L true))))
+       (=> a!13 (str_invariant V U T S R Q P O N M L K J I H G F E D C B A)))))))
+    ))
+(assert (forall ((A Int)
+         (B Bool)
+         (C Bool)
+         (D Bool)
+         (E Bool)
+         (F Bool)
+         (G Bool)
+         (H Int)
+         (I Bool)
+         (J Bool)
+         (K Bool)
+         (L Bool)
+         (M Bool)
+         (N Int)
+         (O Int)
+         (P Int)
+         (Q Int)
+         (R Bool)
+         (S Bool)
+         (T Int)
+         (U Bool)
+         (V Bool)
+         (W Bool)
+         (X Bool)
+         (Y Bool)
+         (Z Bool)
+         (A1 Bool)
+         (B1 Bool)
+         (C1 Bool)
+         (D1 Bool)
+         (E1 Bool)
+         (F1 Int)
+         (G1 Bool)
+         (H1 Bool)
+         (I1 Bool)
+         (J1 Bool)
+         (K1 Bool)
+         (L1 Int)
+         (M1 Int)
+         (N1 Int)
+         (O1 Int)
+         (P1 Bool)
+         (Q1 Bool)
+         (R1 Bool)
+         (S1 Bool)
+         (T1 Bool)
+         (U1 Bool)
+         (V1 Bool)
+         (W1 Bool)
+         (X1 Bool))
+  (let ((a!1 (ite (= E true)
+                     (ite (= (+ (- 1) N) 0) (+ 1 O) O)
+                     (ite (= B true) (ite (= S1 true) 0 O) O)))
+           (a!4 (ite (= B true) (ite (= S1 true) (+ (+ 1 O) N) N) N))
+           (a!8 (ite (= D true)
+                     (ite (= U1 true) 1 P)
+                     (ite (= C true) (ite (= T1 true) (+ (- 1) P) P) P)))
+           (a!11 (ite (= C true)
+                      (ite (= T1 true) (+ (- 1) Q) Q)
+                      (ite (= B true) (ite (= S1 true) (+ (- 1) Q) Q) Q)))
+           (a!14 (or (or (= R1 true) (= G1 true)) (= V true)))
+           (a!18 (and (and (not (= R1 true)) (not (= G1 true)))
+                      (not (= V true))))
+           (a!21 (and (and (not (= R1 true)) (not (= G1 true)))
+                      (= V true)
+                      (not (= K true))
+                      (not (= E true))
+                      (not (= D true))
+                      (not (= C true))
+                      (not (= B true))))
+           (a!25 (or (and (= K1 true) (>= A 0) (>= (- 4 A) 0))
+                     (not (= J1 true))))
+           (a!26 (and (>= (+ (- 1) Q) 0) (= P 0) (= N 0) (= O 0)))
+           (a!27 (and (>= (+ (- 1) Q) 0) (>= (+ (- 1) P) 0)))
+           (a!28 (and (>= (+ (- 1) Q) 0) (>= (+ (+ (- 1) O) N) 0))))
+     (let ((a!2 (ite (= K true) (ite (>= (+ (- 1) O) 0) (+ (- 1) O) O) a!1))
+           (a!5 (ite (= E true)
+                     (ite (= (+ (- 1) N) 0) 0 N)
+                     (ite (= C true) (ite (= T1 true) (+ 2 N) N) a!4)))
+           (a!9 (ite (= K true) (ite (>= (+ (- 1) O) 0) (+ 1 P) P) a!8))
+           (a!12 (ite (= V true)
+                      (ite (= V1 true) (+ (- 1) Q) Q)
+                      (ite (= D true) (ite (= U1 true) (+ (- 1) Q) Q) a!11)))
+           (a!15 (or (or (or a!14 (= K true)) (= E true)) (= D true)))
+           (a!16 (or (or (or a!14 (= K true)) (= E true))
+                     (not (= D true))
+                     (= C true)
+                     (= B true)))
+           (a!19 (and (and a!18 (not (= K true))) (not (= E true))))
+           (a!22 (and (and a!18 (not (= K true)))
+                      (= E true)
+                      (not (= D true))
+                      (not (= C true))
+                      (not (= B true)))))
+     (let ((a!3 (ite (= R1 true)
+                     (ite (= X1 true) (+ 1 O) O)
+                     (ite (= V true) (ite (= V1 true) 0 O) a!2)))
+           (a!6 (ite (= V true) (ite (= V1 true) (+ (+ 1 O) N) N) a!5))
+           (a!10 (- N1 (ite (= G1 true) (ite (= W1 true) (+ (- 1) P) P) a!9)))
+           (a!13 (ite (= R1 true)
+                      (ite (= X1 true) (+ (- 1) Q) Q)
+                      (ite (= G1 true) (ite (= W1 true) (+ (- 1) Q) Q) a!12)))
+           (a!17 (and (or (or a!15 (= C true)) (= B true))
+                      (or (not (= R1 true))
+                          (= G1 true)
+                          (= V true)
+                          (= K true)
+                          (= E true)
+                          (= D true)
+                          (= C true)
+                          (= B true))
+                      (or (= R1 true)
+                          (not (= G1 true))
+                          (= V true)
+                          (= K true)
+                          (= E true)
+                          (= D true)
+                          (= C true)
+                          (= B true))
+                      (or (or (= R1 true) (= G1 true))
+                          (not (= V true))
+                          (= K true)
+                          (= E true)
+                          (= D true)
+                          (= C true)
+                          (= B true))
+                      (or a!14
+                          (not (= K true))
+                          (= E true)
+                          (= D true)
+                          (= C true)
+                          (= B true))
+                      (or (or a!14 (= K true))
+                          (not (= E true))
+                          (= D true)
+                          (= C true)
+                          (= B true))
+                      a!16
+                      (or a!15 (not (= C true)) (= B true))
+                      (or (or a!15 (= C true)) (not (= B true)))))
+           (a!20 (and (and a!19 (not (= D true))) (not (= C true))))
+           (a!23 (and (and a!19 (not (= D true))) (= C true) (not (= B true)))))
+     (let ((a!7 (- L1 (ite (= G1 true) (ite (= W1 true) (+ 2 N) N) a!6)))
+           (a!24 (or (not (= K1 true))
+                     (and a!20 (not (= B true)))
+                     (and (= R1 true)
+                          (not (= G1 true))
+                          (not (= V true))
+                          (not (= K true))
+                          (not (= E true))
+                          (not (= D true))
+                          (not (= C true))
+                          (not (= B true)))
+                     (and (not (= R1 true))
+                          (= G1 true)
+                          (not (= V true))
+                          (not (= K true))
+                          (not (= E true))
+                          (not (= D true))
+                          (not (= C true))
+                          (not (= B true)))
+                     a!21
+                     (and a!18
+                          (= K true)
+                          (not (= E true))
+                          (not (= D true))
+                          (not (= C true))
+                          (not (= B true)))
+                     a!22
+                     (and a!19 (= D true) (not (= C true)) (not (= B true)))
+                     a!23
+                     (and a!20 (= B true)))))
+     (let ((a!29 (and (str_invariant C1
+                                     B1
+                                     A1
+                                     Z
+                                     Y
+                                     X
+                                     W
+                                     U
+                                     T
+                                     S
+                                     R
+                                     Q
+                                     P
+                                     O
+                                     N
+                                     M
+                                     L
+                                     J
+                                     I
+                                     H
+                                     G
+                                     F)
+                      (= (- M1 a!3) 0)
+                      (= a!7 0)
+                      (or (not (= I1 true)) (>= O1 0) (not (= Q1 true)))
+                      (or (and (= J1 true) (= J true)) (not (= I1 true)))
+                      (= (- F1 H) 0)
+                      (= a!10 0)
+                      (= (- O1 a!13) 0)
+                      (or (and (= I1 true) (< O1 0)) (= Q1 true))
+                      (or (= K1 true) a!17)
+                      (or (not (= J1 true)) (not (= J true)) (= I1 true))
+                      (not (= H1 true))
+                      a!24
+                      (not (= E1 true))
+                      a!25
+                      (not (= D1 true))
+                      (or (not (= K1 true)) (< A 0) (< (- 4 A) 0) (= J1 true))
+                      (= X1 a!26)
+                      (= W1 a!27)
+                      (= V1 a!28)
+                      (= U1 a!26)
+                      (= T1 a!27)
+                      (= S1 a!28)
+                      (not (= P1 true)))))
+       (=> a!29
+           (str_invariant R1
+                          G1
+                          V
+                          K
+                          E
+                          D
+                          C
+                          B
+                          A
+                          Q1
+                          P1
+                          O1
+                          N1
+                          M1
+                          L1
+                          K1
+                          J1
+                          I1
+                          H1
+                          F1
+                          E1
+                          D1)))))))
+    ))
+
+
+(check-sat)
+(exit)

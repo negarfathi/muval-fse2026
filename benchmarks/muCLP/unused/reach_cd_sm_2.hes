@@ -1,0 +1,19 @@
+RG (0, 0, 0, 0, 0)
+s.t.
+RG (b0: real) (b1: real) (b2: real) (b3: real) (b4: real): bool
+  =mu b0 > 2 \/ b1 > 2 \/ b2 > 2 \/ b3 > 2 \/ b4 > 2 \/
+      (exists (b0': real) (b1': real) (b2': real) (b3': real) (b4': real).
+        1+b2+b3+b4 = b0'+b1'+b2'+b3'+b4' /\
+        SG b0' b1' b2' b3' b4') /\
+      (exists (b0': real) (b1': real) (b2': real) (b3': real) (b4': real).
+        1+b0+b3+b4 = b0'+b1'+b2'+b3'+b4' /\
+        SG b0' b1' b2' b3' b4') /\
+      (exists (b0': real) (b1': real) (b2': real) (b3': real) (b4': real).
+        1+b0+b1+b4 = b0'+b1'+b2'+b3'+b4' /\
+        SG b0' b1' b2' b3' b4') /\
+      (exists (b0': real) (b1': real) (b2': real) (b3': real) (b4': real).
+        1+b0+b1+b2 = b0'+b1'+b2'+b3'+b4' /\
+        SG b0' b1' b2' b3' b4') /\
+      (exists (b0': real) (b1': real) (b2': real) (b3': real) (b4': real).
+        1+b1+b2+b3 = b0'+b1'+b2'+b3'+b4' /\
+        SG b0' b1' b2' b3' b4');

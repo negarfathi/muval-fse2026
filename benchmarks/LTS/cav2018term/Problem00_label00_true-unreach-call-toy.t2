@@ -1,0 +1,62 @@
+///*** 1_main ***///
+START: main_bb1;
+
+FROM: main_bb1;
+v := nondet();
+var__temp_voutput.0 := -1;
+voutput.0 := var__temp_voutput.0;
+TO: main_bb2;
+
+FROM: main_bb2;
+var__temp_v.0 := 0;
+v.0 := var__temp_v.0;
+TO: main_bb2_end;
+
+FROM: main_bb2_end;
+assume(voutput.0 != 0);
+TO: main_bb3;
+
+FROM: main_bb2_end;
+assume(voutput.0 == 0);
+TO: main_bb5;
+
+FROM: main_bb3;
+v6 := nondet();
+v.off := v6 + -1;
+var__temp_v.0 := -2;
+v.0 := var__temp_v.0;
+TO: main_bb3_end;
+
+FROM: main_bb3_end;
+assume(v.off < 6);
+TO: main_bb4;
+
+FROM: main_bb3_end;
+assume(v.off >= 6);
+TO: main_bb5;
+
+FROM: main_bb4;
+v7 := nondet();
+v8 := v7 + 1;
+v := nondet();
+v9 := nondet();
+v11 := v6 - 1;
+TO: main_bb4_v.0.i;
+FROM: main_bb4_v.0.i;
+assume(v9 == 10);
+v.0.i := 0;
+TO: main_bb4_sv.0.i;
+
+FROM: main_bb4_v.0.i;
+assume(v9 != 10);
+v.0.i := v11;
+TO: main_bb4_sv.0.i;
+
+FROM: main_bb4_sv.0.i;
+var__temp_voutput.0 := v.0.i;
+voutput.0 := var__temp_voutput.0;
+TO: main_bb2;
+
+FROM: main_bb5;
+TO: main_bb5_ret;
+

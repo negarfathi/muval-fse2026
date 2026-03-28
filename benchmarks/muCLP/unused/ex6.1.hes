@@ -1,0 +1,4 @@
+forall (x: int). X x /\ Y x
+s.t.
+X (x: int): bool =mu Y (x - 1);
+Y (y: int): bool =mu y <= 0 \/ X (y - 1);

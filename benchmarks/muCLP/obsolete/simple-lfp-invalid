@@ -1,0 +1,9 @@
+(not (exists
+ ((x int))
+ (atom (predapp eq
+         (
+          (x int)
+          (funapp (integer 3) ())
+          )))))
+
+

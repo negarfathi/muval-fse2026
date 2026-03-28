@@ -1,0 +1,7 @@
+(or
+ (and
+  (and
+     (atom true)
+     (atom false))
+  (atom false))
+ (atom false))

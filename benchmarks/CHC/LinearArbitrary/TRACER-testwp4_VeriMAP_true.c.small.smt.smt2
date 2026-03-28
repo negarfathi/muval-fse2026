@@ -1,0 +1,101 @@
+(set-logic HORN)
+
+(declare-fun |main@entry| ( ) Bool)
+(declare-fun |main@entry.split| ( ) Bool)
+
+(assert
+  (forall ( (CHC_COMP_UNUSED Bool) ) 
+    (=>
+      (and
+        true
+      )
+      main@entry
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Bool) (C Int) (D Bool) (E Int) (F Bool) (G Int) (H Bool) (I Int) (J Bool) (K Int) (L Bool) (M Int) (N Bool) (O Int) (P Bool) (Q Int) (R Bool) (S Int) (T Bool) (U Int) (V Bool) (W Int) (X Bool) (Y Int) (Z Bool) (A1 Int) (B1 Bool) (C1 Int) (D1 Bool) (E1 Int) (F1 Bool) (G1 Int) (H1 Bool) (I1 Int) (J1 Bool) (K1 Int) (L1 Bool) (M1 Int) (N1 Bool) (O1 Int) (P1 Int) (Q1 Int) (R1 Int) (S1 Int) (T1 Int) (U1 Int) (V1 Int) (W1 Int) (X1 Int) (Y1 Int) (Z1 Int) (A2 Int) (B2 Int) (C2 Int) (D2 Int) (E2 Int) (F2 Int) (G2 Int) (H2 Int) (I2 Int) (J2 Int) (K2 Int) (L2 Int) (M2 Int) (N2 Int) (O2 Int) (P2 Int) (Q2 Int) (R2 Int) (S2 Int) (T2 Int) (U2 Int) (V2 Int) (W2 Int) (X2 Int) (Y2 Int) (Z2 Int) (A3 Int) (B3 Bool) (C3 Bool) ) 
+    (=>
+      (and
+        main@entry
+        (and (= D (= C 0))
+     (= F (= E 0))
+     (= H (= G 0))
+     (= J (= I 0))
+     (= L (= K 0))
+     (= N (= M 0))
+     (= P (= O 0))
+     (= R (= Q 0))
+     (= T (= S 0))
+     (= V (= U 0))
+     (= X (= W 0))
+     (= Z (= Y 0))
+     (= B1 (= A1 0))
+     (= D1 (= C1 0))
+     (= F1 (= E1 0))
+     (= H1 (= G1 0))
+     (= J1 (= I1 0))
+     (= L1 (= K1 0))
+     (= N1 (= M1 0))
+     (= C3 (not (<= A3 40)))
+     (= O1 (ite L1 1 2))
+     (= P1 (ite N1 1 2))
+     (= Q1 (+ O1 P1))
+     (= R1 (ite J1 1 2))
+     (= S1 (+ Q1 R1))
+     (= T1 (ite H1 1 2))
+     (= U1 (+ S1 T1))
+     (= V1 (ite F1 1 2))
+     (= W1 (+ U1 V1))
+     (= X1 (ite D1 1 2))
+     (= Y1 (+ W1 X1))
+     (= Z1 (ite B1 1 2))
+     (= A2 (+ Y1 Z1))
+     (= B2 (ite Z 1 2))
+     (= C2 (+ A2 B2))
+     (= D2 (ite X 1 2))
+     (= E2 (+ C2 D2))
+     (= F2 (ite V 1 2))
+     (= G2 (+ E2 F2))
+     (= H2 (ite T 1 2))
+     (= I2 (+ G2 H2))
+     (= J2 (ite R 1 2))
+     (= K2 (+ I2 J2))
+     (= L2 (ite P 1 2))
+     (= M2 (+ K2 L2))
+     (= N2 (ite N 1 2))
+     (= O2 (+ M2 N2))
+     (= P2 (ite L 1 2))
+     (= Q2 (+ O2 P2))
+     (= R2 (ite J 1 2))
+     (= S2 (+ Q2 R2))
+     (= T2 (ite H 1 2))
+     (= U2 (+ S2 T2))
+     (= V2 (ite F 1 2))
+     (= W2 (+ U2 V2))
+     (= X2 (ite D 1 2))
+     (= Y2 (+ W2 X2))
+     (= Z2 (ite B 1 2))
+     (= A3 (+ Y2 Z2))
+     (not B3)
+     (= C3 true)
+     (= B (= A 0)))
+      )
+      main@entry.split
+    )
+  )
+)
+(assert
+  (forall ( (CHC_COMP_UNUSED Bool) ) 
+    (=>
+      (and
+        main@entry.split
+        true
+      )
+      false
+    )
+  )
+)
+
+(check-sat)
+(exit)

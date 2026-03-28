@@ -1,0 +1,12 @@
+; --full-saturate-quant --inst-when=full-last-call --inst-no-entail --term-db-mode=relevant --random-seed=1 --lang=smt2 --tlimit 442
+;(set-option :produce-unsat-cores true)
+(set-logic ALL_SUPPORTED)
+(declare-sort A$ 0)
+(declare-sort A_a_sp_nu$ 0)
+(declare-codatatypes () ((A_stream$ (sCons$ (shd$ A$) (stl$ A_stream$)))))
+(declare-fun s$ () A_stream$)
+(declare-fun copy$ () A_a_sp_nu$)
+(declare-fun run_nu$ (A_a_sp_nu$ A_stream$) A_stream$)
+(assert (! (not (= (run_nu$ copy$ s$) s$)) :named a0))
+(check-sat)
+;(get-unsat-core)

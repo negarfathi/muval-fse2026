@@ -1,0 +1,13 @@
+forall (x: int) (y: int). G x y
+s.t.
+G (x: int) (y: int): bool =nu x < 0 \/ y < 0 \/ X x y;
+X (x: int) (y: int): bool =mu
+   x = 0 \/
+   x > 0 /\ y = 0 /\ X (x - 1) 1 \/
+   x > 0 /\ y > 0 /\ X x (y - 1) /\
+   (forall (s: int). NegAck x (y - 1) s \/ X (x - 1) s);
+NegAck (x: int) (y: int) (r: int): bool =nu
+  (x != 0 \/ r != y + 1) /\
+  (x <= 0 \/ y != 0 \/ NegAck (x - 1) 1 r) /\
+  (x <= 0 \/ y <= 0 \/
+  (forall (s: int). NegAck x (y - 1) s \/ NegAck (x - 1) s r));

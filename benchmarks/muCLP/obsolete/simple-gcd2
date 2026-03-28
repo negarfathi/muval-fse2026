@@ -1,0 +1,52 @@
+;; valid
+
+;; forall n, m. n > 0 /\ m > 0 => gcd(x, y) terminates
+
+;; forall n, m. n > 0 /\ m > 0 => F n mu
+;; F(x,y) =mu y=0 \/ (x < y => F(y,x)) /\ (x>=y => F(x-y,y))
+
+(imply
+  (and
+    (atom (predapp gt (
+      (n int)
+      (funapp (integer 0) ())
+    )))
+    (atom (predapp gt (
+      (m int)
+      (funapp (integer 0) ())
+    )))
+  )
+  (atom (predapp
+    (mu F ((x int) (y int))
+      (or
+        (atom (predapp eq (
+          (y int)
+          (funapp (integer 0) ())
+        )))
+        (and
+          (imply
+            (atom (predapp lt (
+              (x int)
+              (y int)
+            )))
+            (atom (predapp (F (int int)) (
+              (y int)
+              (x int)
+            )))
+          )
+          (imply
+            (atom (predapp geq (
+              (x int)
+              (y int)
+            )))
+            (atom (predapp (F (int int)) (
+              (funapp sub ((x int) (y int)))
+              (y int)
+            )))
+          )
+        )
+      )
+    )
+    ((n int) (m int))
+  ))
+)

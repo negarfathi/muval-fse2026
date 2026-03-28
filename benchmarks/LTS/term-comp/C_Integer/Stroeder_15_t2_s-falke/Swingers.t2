@@ -1,0 +1,27 @@
+///*** 1_main ***///
+START: 1;
+
+FROM: 1;
+TO: 2;
+FROM: 2;
+  kittel_old__v_samantha.0 := v_samantha.0;
+  kittel_old__v_bob.0 := v_bob.0;
+  v_samantha.0 := 17;
+  v_bob.0 := 13;
+TO: 3;
+FROM: 3;
+  kittel_old__v_samantha.0 := v_samantha.0;
+  kittel_old__v_bob.0 := v_bob.0;
+  kittel_old__v_add := v_add;
+  assume(kittel_old__v_bob.0 + kittel_old__v_samantha.0 < 100);
+  v_samantha.0 := kittel_old__v_bob.0;
+  v_bob.0 := kittel_old__v_samantha.0;
+  v_add := kittel_old__v_bob.0 + kittel_old__v_samantha.0;
+TO: 3;
+FROM: 3;
+  kittel_old__v_add := v_add;
+  assume(v_bob.0 + v_samantha.0 >= 100);
+  v_add := v_bob.0 + v_samantha.0;
+TO: 4;
+FROM: 4;
+TO: 5;

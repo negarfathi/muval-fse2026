@@ -1,0 +1,22 @@
+(set-logic HORN)
+
+(declare-fun inv-f (Int Int) Bool)
+(assert (forall ((A Int) (B Int))
+  (let ((a!1 (and (inv-f B A) (or (< (- 1 B) 0) (< (+ 3 A) 0)))))
+       (=> a!1 false))
+    ))
+(assert (forall ((A Int) (B Int))
+  (=> (and (>= (- 1 B) 0) (>= B 0) (= (+ 3 A) 0)) (inv-f B A))))
+(assert (forall ((A Int) (B Int) (C Int) (D Int))
+  (let ((a!1 (and (= (- (+ 1 D) B) 0)
+                     (= (- (+ (- 2) C) A) 0)
+                     (>= (+ (- 1 B) A) 0)))
+           (a!2 (and (= (- D B) 0)
+                     (= (- (+ (- 1) C) A) 0)
+                     (>= (- (+ (- 2) B) A) 0))))
+       (=> (and (inv-f B A) (or a!1 a!2)) (inv-f D C)))
+    ))
+
+
+(check-sat)
+(exit)

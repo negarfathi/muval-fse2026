@@ -1,0 +1,20 @@
+;; letrec mu X(x, z). (x=0 /\ z=0) \/
+;;                    (x>0 /\ z=x + w /\ X(x-1, w))(n, r)
+;; in X(n, r1) /\ X(n-1, r2) => r1 = n + r2 
+(letrec
+ ((mu X ((x int) (z int))
+  (or
+   (and (atom (predapp eq ((x int) (funapp (integer 0) ()))))
+        (atom (predapp eq ((z int) (funapp (integer 0) ())))))
+   (and (atom (predapp gt ((x int) (funapp (integer 0) ()))))
+        (and
+	 (atom (predapp eq ((z int) (funapp add ((x int) (w int))))))
+	 (atom (predapp (X (int int))
+	        ((funapp sub ((x int) (funapp (integer 1) ()))) (w int))
+ )))))))
+ (imply
+  (and (atom (predapp (X (int int)) ((n int) (r1 int))))
+       (atom (predapp (X (int int))
+        ((funapp sub ((n int) (funapp (integer 1) ()))) (r2 int)))))
+  (atom (predapp eq ((r1 int) (funapp add ((n int) (r2 int))))))
+))

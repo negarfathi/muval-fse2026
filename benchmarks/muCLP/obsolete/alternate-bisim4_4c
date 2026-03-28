@@ -1,0 +1,118 @@
+;; valid
+
+(imply
+  (and
+    (and
+      (and
+        (atom (predapp
+          (nu B ((x1 int) (y1 int) (x2 int) (y2 int))
+            (imply
+              (atom (predapp leq (
+                (funapp add ((x1 int) (funapp (integer 1) ())))
+                (y1 int)
+              )))
+              (and
+                (atom (predapp leq (
+                  (funapp add ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+                (atom (predapp (B (int int int int)) (
+                  (funapp add ((x1 int) (funapp (integer 1) ())))
+                  (y1 int)
+                  (funapp add ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+              )
+            )
+          )
+          ((x1 int) (y1 int) (x2 int) (y2 int))
+        ))
+        (atom (predapp
+          (nu B ((x1 int) (y1 int) (x2 int) (y2 int))
+            (imply
+              (atom (predapp geq (
+                (funapp sub ((x1 int) (funapp (integer 1) ())))
+                (y1 int)
+              )))
+              (and
+                (atom (predapp geq (
+                  (funapp sub ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+                (atom (predapp (B (int int int int)) (
+                  (funapp sub ((x1 int) (funapp (integer 1) ())))
+                  (y1 int)
+                  (funapp sub ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+              )
+            )
+          )
+          ((x1 int) (y1 int) (x2 int) (y2 int))
+        ))
+      )
+      (and
+        (atom (predapp
+          (nu B ((x1 int) (y1 int) (x2 int) (y2 int))
+            (imply
+              (atom (predapp leq (
+                (funapp add ((x1 int) (funapp (integer 1) ())))
+                (y1 int)
+              )))
+              (and
+                (atom (predapp leq (
+                  (funapp add ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+                (atom (predapp (B (int int int int)) (
+                  (funapp add ((x1 int) (funapp (integer 1) ())))
+                  (y1 int)
+                  (funapp add ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+              )
+            )
+          )
+          ((x2 int) (y2 int) (x1 int) (y1 int))
+        ))
+        (atom (predapp
+          (nu B ((x1 int) (y1 int) (x2 int) (y2 int))
+            (imply
+              (atom (predapp geq (
+                (funapp sub ((x1 int) (funapp (integer 1) ())))
+                (y1 int)
+              )))
+              (and
+                (atom (predapp geq (
+                  (funapp sub ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+                (atom (predapp (B (int int int int)) (
+                  (funapp sub ((x1 int) (funapp (integer 1) ())))
+                  (y1 int)
+                  (funapp sub ((x2 int) (funapp (integer 1) ())))
+                  (y2 int)
+                )))
+              )
+            )
+          )
+          ((x2 int) (y2 int) (x1 int) (y1 int))
+        ))
+      )
+    )
+    (and
+      (atom (predapp geq (
+        (y1 int)
+        (x1 int)
+      )))
+      (atom (predapp geq (
+        (y2 int)
+        (x2 int)
+      )))
+    )
+  )
+  (atom (predapp eq (
+    (funapp sub ((y1 int) (x1 int)))
+    (funapp sub ((y2 int) (x2 int)))
+  )))
+)

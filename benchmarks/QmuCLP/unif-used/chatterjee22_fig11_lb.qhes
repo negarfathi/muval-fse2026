@@ -1,0 +1,6 @@
+X 50.0 50.0 >= 0.93
+s.t.
+X (x : real) (y : real) : real =mu
+  if x <= 100.0 then unif r. Y (x + 1.0) (y + r * 2.0 - 1.0) else 1.0;
+Y (x : real) (y : real) : real =mu if y <= 0.0 then Z y else X x y;
+Z (y : real) : real =mu if y <= 0 then Z y else X x y;

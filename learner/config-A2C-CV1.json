@@ -1,0 +1,25 @@
+{
+    "version":          [0,4,0],
+    "mode":             "run",
+    "bench list":       ["benchmarks/SyGuS/pcsat_rl/sp1/*",
+			 "benchmarks/SyGuS/pcsat_rl/sp2/*",
+			 "benchmarks/SyGuS/pcsat_rl/sp3/*",
+			 "benchmarks/SyGuS/pcsat_rl/sp4/*"],
+    "log directry":     "/workspace/log",
+    "number of epochs": 300,
+    "agent": {
+        "kind":             "A2C",
+	"state abstraction": "tensor",
+        "input dir":        null,
+        "output dir":       "/workspace/models",
+        "learn":            true,
+        "alpha":            5e-5,
+        "epsilon":          0.05,
+        "gamma":            0.99
+    },
+    "prover": {
+        "command":  ["./_build/default/main.exe", "-c", "./config/solver/pcsat_rl_flex.json", "-p", "sygus"],
+        "timeout":  120.0
+    },
+    "auto restart":     null
+}

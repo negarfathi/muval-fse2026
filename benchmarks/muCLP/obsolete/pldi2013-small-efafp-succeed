@@ -1,0 +1,175 @@
+;; forall y. F1 5 y 0
+;; s.t.
+;; F1 x y p =mu G1 x y p \/ (x < 0 => F2 x y p) /\ (x >= 0 => F1 (x-1) y p \/ F1 x y 0)
+;; F2 x y p =mu G2 x y p \/ (y < 0 => F3 x y p) /\ (y >= 0 => F2 x (y-1) p)
+;; F3 x y p =mu G3 x y p \/ F4 x y 1
+;; F4 x y p =mu G4 x y p \/ F4 x y p
+;; G1 x y p =mu p > 0 \/ (x < 0 => G2 x y p) /\ (x >= 0 => G1 (x-1) y p /\ G1 x y 0)
+;; G2 x y p =mu p > 0 \/ (y < 0 => G3 x y p) /\ (y >= 0 => G2 x (y-1) p)
+;; G3 x y p =mu p > 0 \/ G4 x y 1
+;; G4 x y p =mu p > 0 \/ G4 x y p
+
+(atom (predapp
+  (mu F1 ((x int) (y int) (p int))
+    (or
+      (atom (predapp
+        (mu G1 ((x int) (y int) (p int))
+          (or
+            (atom (predapp gt ((p int) 0)))
+            (and
+              (imply
+                (atom (predapp lt ((x int) 0)))
+                (atom (predapp
+                  (mu G2 ((x int) (y int) (p int))
+                    (or
+                      (atom (predapp gt ((p int) 0)))
+                      (and
+                        (imply
+                          (atom (predapp lt ((y int) 0)))
+                          (atom (predapp
+                            (mu G3 ((x int) (y int) (p int))
+                              (or
+                                (atom (predapp gt ((p int) 0)))
+                                (atom (predapp
+                                  (mu G4 ((x int) (y int) (p int))
+                                    (or
+                                      (atom (predapp gt ((p int) 0)))
+                                      (atom (predapp (G4 (int int int)) ((x int) (y int) (p int))))
+                                    )
+                                  )
+                                  ((x int) (y int) 1)
+                                ))
+                              )
+                            )
+                            ((x int) (y int) (p int))
+                          ))
+                        )
+                        (imply
+                          (atom (predapp geq ((y int) 0)))
+                          (atom (predapp (G2 (int int int)) ((x int) (funapp sub ((y int) 1)) (p int))))
+                        )
+                      )
+                    )
+                  )
+                  ((x int) (y int) (p int))
+                ))
+              )
+              (imply
+                (atom (predapp geq ((x int) 0)))
+                (and
+                  (atom (predapp (G1 (int int int)) ((funapp sub ((x int) 1)) (y int) (p int))))
+                  (atom (predapp (G1 (int int int)) ((x int) (y int) 0)))
+                )
+              )
+            )
+          )
+        )
+        ((x int) (y int) (p int))
+      ))
+      (and
+        (imply
+          (atom (predapp lt ((x int) 0)))
+          (atom (predapp
+            (mu F2 ((x int) (y int) (p int))
+              (or
+                (atom (predapp
+                  (mu G2 ((x int) (y int) (p int))
+                    (or
+                      (atom (predapp gt ((p int) 0)))
+                      (and
+                        (imply
+                          (atom (predapp lt ((y int) 0)))
+                          (atom (predapp
+                            (mu G3 ((x int) (y int) (p int))
+                              (or
+                                (atom (predapp gt ((p int) 0)))
+                                (atom (predapp
+                                  (mu G4 ((x int) (y int) (p int))
+                                    (or
+                                      (atom (predapp gt ((p int) 0)))
+                                      (atom (predapp (G4 (int int int)) ((x int) (y int) (p int))))
+                                    )
+                                  )
+                                  ((x int) (y int) 1)
+                                ))
+                              )
+                            )
+                            ((x int) (y int) (p int))
+                          ))
+                        )
+                        (imply
+                          (atom (predapp geq ((y int) 0)))
+                          (atom (predapp (G2 (int int int)) ((x int) (funapp sub ((y int) 1)) (p int))))
+                        )
+                      )
+                    )
+                  )
+                  ((x int) (y int) (p int))
+                ))
+                (and
+                  (imply
+                    (atom (predapp lt ((y int) 0)))
+                    (atom (predapp
+                      (mu F3 ((x int) (y int) (p int))
+                        (or
+                          (atom (predapp
+                            (mu G3 ((x int) (y int) (p int))
+                              (or
+                                (atom (predapp gt ((p int) 0)))
+                                (atom (predapp
+                                  (mu G4 ((x int) (y int) (p int))
+                                    (or
+                                      (atom (predapp gt ((p int) 0)))
+                                      (atom (predapp (G4 (int int int)) ((x int) (y int) (p int))))
+                                    )
+                                  )
+                                  ((x int) (y int) 1)
+                                ))
+                              )
+                            )
+                            ((x int) (y int) (p int))
+                          ))
+                          (atom (predapp
+                            (mu F4 ((x int) (y int) (p int))
+                              (or
+                                (atom (predapp
+                                  (mu G4 ((x int) (y int) (p int))
+                                    (or
+                                      (atom (predapp gt ((p int) 0)))
+                                      (atom (predapp (G4 (int int int)) ((x int) (y int) (p int))))
+                                    )
+                                  )
+                                  ((x int) (y int) (p int))
+                                ))
+                                (atom (predapp (F4 (int int int)) ((x int) (y int) (p int))))
+                              )
+                            )
+                            ((x int) (y int) 1)
+                          ))
+                        )
+                      )
+                      ((x int) (y int) (p int))
+                    ))
+                  )
+                  (imply
+                    (atom (predapp geq ((y int) 0)))
+                    (atom (predapp (F2 (int int int)) ((x int) (funapp sub ((y int) 1)) (p int))))
+                  )
+                )
+              )
+            )
+            ((x int) (y int) (p int))
+          ))
+        )
+        (imply
+          (atom (predapp geq ((x int) 0)))
+          (or
+            (atom (predapp (F1 (int int int)) ((funapp sub ((x int) 1)) (y int) (p int))))
+            (atom (predapp (F1 (int int int)) ((x int) (y int) 0)))
+          )
+        )
+      )
+    )
+  )
+  (5 (y int) 0)
+))

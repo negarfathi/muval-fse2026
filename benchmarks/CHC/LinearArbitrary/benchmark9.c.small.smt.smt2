@@ -1,0 +1,270 @@
+(set-logic HORN)
+
+(declare-fun |main@entry| ( Int Int Int ) Bool)
+(declare-fun |main@.lr.ph| ( Int Int Int Int Int Int Int Int ) Bool)
+(declare-fun |main@.lr.ph9| ( Int Int Int Int Int Int Int Int Int Int ) Bool)
+(declare-fun |main@verifier.error| ( Int Int ) Bool)
+(declare-fun |main@verifier.error.split| ( ) Bool)
+(declare-fun |main@.lr.ph14| ( Int Int Int Int Int Int Int Int ) Bool)
+(declare-fun |main@.preheader| ( Int Int Int Int Int Int ) Bool)
+(declare-fun |main@.loopexit| ( Int Int Int Int Int Int Int Int ) Bool)
+
+(assert
+  (forall ( (A Int) (B Int) (C Int) ) 
+    (=>
+      (and
+        true
+      )
+      (main@entry A B C)
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) (B Bool) (C Int) (D Bool) (E Int) (F Int) (G Int) (H Bool) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) ) 
+    (=>
+      (and
+        (main@entry I K F)
+        (and (= B (= J 0))
+     (= D (= C 0))
+     (= H (= G 0))
+     (= E F)
+     (= M 2)
+     (= N 2)
+     (= A true)
+     (= B true)
+     (= D true)
+     (= H true)
+     (= A (= L 0)))
+      )
+      (main@.preheader I J K L M N)
+    )
+  )
+)
+(assert
+  (forall ( (A Bool) (B Bool) (C Bool) (D Int) (E Int) (F Bool) (G Int) (H Int) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) ) 
+    (=>
+      (and
+        (main@entry G I M)
+        (and (= F (= E 0))
+     (= A (= J 0))
+     (= B (= H 0))
+     (= D M)
+     (= K 2)
+     (= L 2)
+     (= C true)
+     (not F)
+     (= A true)
+     (= B true)
+     (= C (= N 0)))
+      )
+      (main@.lr.ph14 G H I J K L M N)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Int) (F Int) (G Int) (H Int) (I Bool) (J Int) (K Int) (L Int) (M Int) ) 
+    (=>
+      (and
+        (main@.preheader E A B C G H)
+        (and (= D E)
+     (= J (+ 1 G))
+     (= K (+ 1 H))
+     (= L J)
+     (= M K)
+     (= I true)
+     (= I (= F 0)))
+      )
+      (main@verifier.error L M)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Bool) (D Int) (E Int) (F Int) (G Int) (H Int) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) (O Int) (P Int) (Q Int) ) 
+    (=>
+      (and
+        (main@.preheader H I P Q F G)
+        (and (= A H)
+     (= D (+ 1 G))
+     (= E (+ 1 F))
+     (= K E)
+     (= J D)
+     (= L 1)
+     (= M 1)
+     (= N F)
+     (= O G)
+     (not C)
+     (= C (= B 0)))
+      )
+      (main@.lr.ph9 H I J K L M N O P Q)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Int) (F Int) (G Bool) (H Int) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) (O Int) ) 
+    (=>
+      (and
+        (main@.lr.ph14 J K L M A B D F)
+        (and (= C D)
+     (= I (+ 1 A))
+     (= H (+ 1 B))
+     (= N I)
+     (= O H)
+     (= G true)
+     (= G (= E F)))
+      )
+      (main@.preheader J K L M N O)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Bool) (F Int) (G Int) (H Int) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) (O Int) ) 
+    (=>
+      (and
+        (main@.lr.ph14 H I J K A B N O)
+        (and (= C N) (= F (+ 1 A)) (= G (+ 1 B)) (= L F) (= M G) (not E) (= E (= D O)))
+      )
+      (main@.lr.ph14 H I J K L M N O)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Int) (F Int) (G Int) (H Int) (I Int) (J Int) (K Bool) (L Int) (M Int) (N Int) (O Int) ) 
+    (=>
+      (and
+        (main@.loopexit D F G H I J A B)
+        (and (= C D)
+     (= L (+ G H))
+     (= M (+ I J))
+     (= N L)
+     (= O M)
+     (= K true)
+     (= K (= E F)))
+      )
+      (main@verifier.error N O)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Bool) (D Int) (E Int) (F Int) (G Int) (H Int) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) (O Int) (P Int) (Q Int) (R Int) (S Int) ) 
+    (=>
+      (and
+        (main@.loopexit J K F H G I R S)
+        (and (= A J)
+     (= E (+ F H))
+     (= D (+ G I))
+     (= M E)
+     (= L D)
+     (= N F)
+     (= O G)
+     (= P H)
+     (= Q I)
+     (not C)
+     (= C (= B K)))
+      )
+      (main@.lr.ph9 J K L M N O P Q R S)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Int) (F Int) (G Bool) (H Int) (I Int) (J Int) (K Int) (L Bool) (M Int) (N Int) (O Int) (P Int) (Q Int) (R Int) (S Int) (T Int) (U Int) (V Int) ) 
+    (=>
+      (and
+        (main@.lr.ph9 O P B A I N M E U V)
+        (and (= L (= K 0))
+     (= C (+ A B))
+     (= D (mod C 2))
+     (= H (ite G 1 (- 1)))
+     (= F (ite G 1 0))
+     (= J U)
+     (= Q (+ H I))
+     (= R M)
+     (= S N)
+     (= T (+ E F))
+     (= L true)
+     (= G (= D 0)))
+      )
+      (main@.loopexit O P Q R S T U V)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Int) (F Int) (G Bool) (H Int) (I Int) (J Int) (K Int) (L Bool) (M Int) (N Int) (O Int) (P Int) (Q Int) (R Int) (S Int) (T Int) (U Int) (V Int) ) 
+    (=>
+      (and
+        (main@.lr.ph9 O P B A I M N E U V)
+        (and (= L (= K 0))
+     (= C (+ A B))
+     (= D (mod C 2))
+     (= H (ite G 1 (- 1)))
+     (= F (ite G 1 0))
+     (= J U)
+     (= Q (+ H I))
+     (= R (+ E F))
+     (= S N)
+     (= T M)
+     (not L)
+     (= G (= D 0)))
+      )
+      (main@.lr.ph O P Q R S T U V)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Bool) (F Int) (G Int) (H Int) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) (O Int) ) 
+    (=>
+      (and
+        (main@.lr.ph H I J M A B N O)
+        (and (= C N)
+     (= F (+ (- 1) A))
+     (= G (+ (- 1) B))
+     (= K F)
+     (= L G)
+     (= E true)
+     (= E (= D O)))
+      )
+      (main@.loopexit H I J K L M N O)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Int) (D Int) (E Bool) (F Int) (G Int) (H Int) (I Int) (J Int) (K Int) (L Int) (M Int) (N Int) (O Int) ) 
+    (=>
+      (and
+        (main@.lr.ph H I J K A B N O)
+        (and (= C N)
+     (= F (+ (- 1) B))
+     (= G (+ (- 1) A))
+     (= L G)
+     (= M F)
+     (not E)
+     (= E (= D O)))
+      )
+      (main@.lr.ph H I J K L M N O)
+    )
+  )
+)
+(assert
+  (forall ( (A Int) (B Int) (C Bool) ) 
+    (=>
+      (and
+        (main@verifier.error A B)
+        (and (not C) (= C (= A B)))
+      )
+      main@verifier.error.split
+    )
+  )
+)
+(assert
+  (forall ( (CHC_COMP_UNUSED Bool) ) 
+    (=>
+      (and
+        main@verifier.error.split
+        true
+      )
+      false
+    )
+  )
+)
+
+(check-sat)
+(exit)

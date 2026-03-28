@@ -1,0 +1,16 @@
+/*
+void main() {
+  int x = ?;
+  while (x != 0) {
+    if (?)
+      x = x + 1;
+    else
+      x = x - 1;
+  }
+}
+*/
+exists (x: int). negI x
+s.t.
+negI (x: int) : bool =nu
+  (x = 0 /\ false) \/
+  (x != 0 /\ (negI (x + 1) \/ negI (x - 1)));

@@ -1,0 +1,128 @@
+///*** 1_main ***///
+START: main_bb0;
+
+FROM: main_bb0;
+v0 := nondet();
+v1 := nondet();
+var__temp_vz.0 := 0;
+var__temp_vy.0 := v1;
+var__temp_vx.0 := v0;
+vz.0 := var__temp_vz.0;
+vy.0 := var__temp_vy.0;
+vx.0 := var__temp_vx.0;
+TO: main_bb0_end;
+
+FROM: main_bb0_end;
+assume(v1 <= 1);
+TO: main_bb6;
+
+FROM: main_bb0_end;
+assume(v1 > 1);
+TO: main_bb1;
+
+FROM: main_bb1;
+TO: main_bb1_end;
+
+FROM: main_bb1_end;
+assume(vx.0 > 0);
+TO: main_bb2;
+
+FROM: main_bb1_end;
+assume(vx.0 <= 0);
+TO: main_bb6;
+
+FROM: main_bb2;
+v4 := vx.0 - vy.0;
+v5 := vy.0 - vz.0;
+TO: main_NodeBlock5;
+
+FROM: main_NodeBlock5;
+TO: main_NodeBlock5_end;
+
+FROM: main_NodeBlock5_end;
+assume(vz.0 < 0);
+TO: main_LeafBlock;
+
+FROM: main_NodeBlock5_end;
+assume(vz.0 >= 0);
+TO: main_NodeBlock;
+
+FROM: main_LeafBlock;
+var__temp_vz.1 := 7;
+vz.1 := var__temp_vz.1;
+TO: main_LeafBlock_end;
+
+FROM: main_LeafBlock_end;
+assume(vz.0 == -20);
+TO: main_bb4;
+
+FROM: main_LeafBlock_end;
+assume(vz.0 != -20);
+TO: main_NewDefault;
+
+FROM: main_NodeBlock;
+TO: main_NodeBlock_end;
+
+FROM: main_NodeBlock_end;
+assume(vz.0 < 13);
+TO: main_LeafBlock1;
+
+FROM: main_NodeBlock_end;
+assume(vz.0 >= 13);
+TO: main_LeafBlock3;
+
+FROM: main_LeafBlock1;
+var__temp_vz.0 := 13;
+var__temp_vy.0 := v5;
+var__temp_vx.0 := v4;
+vz.0 := var__temp_vz.0;
+vy.0 := var__temp_vy.0;
+vx.0 := var__temp_vx.0;
+TO: main_LeafBlock1_end;
+
+FROM: main_LeafBlock1_end;
+assume(vz.0 == 0);
+TO: main_bb1;
+
+FROM: main_LeafBlock1_end;
+assume(vz.0 != 0);
+TO: main_NewDefault;
+
+FROM: main_LeafBlock3;
+var__temp_vz.2 := -20;
+vz.2 := var__temp_vz.2;
+TO: main_LeafBlock3_end;
+
+FROM: main_LeafBlock3_end;
+assume(vz.0 == 13);
+TO: main_bb5;
+
+FROM: main_LeafBlock3_end;
+assume(vz.0 != 13);
+TO: main_NewDefault;
+
+FROM: main_NewDefault;
+TO: main_bb3;
+
+FROM: main_bb3;
+var__temp_vz.1 := 0;
+vz.1 := var__temp_vz.1;
+TO: main_bb4;
+
+FROM: main_bb4;
+var__temp_vz.2 := vz.1;
+vz.2 := var__temp_vz.2;
+TO: main_bb5;
+
+FROM: main_bb5;
+var__temp_vz.0 := vz.2;
+var__temp_vy.0 := v5;
+var__temp_vx.0 := v4;
+vz.0 := var__temp_vz.0;
+vy.0 := var__temp_vy.0;
+vx.0 := var__temp_vx.0;
+TO: main_bb1;
+
+FROM: main_bb6;
+TO: main_bb6_ret;
+

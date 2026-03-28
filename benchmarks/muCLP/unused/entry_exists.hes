@@ -1,0 +1,3 @@
+exists (n: int) (m: int). F n m
+s.t.
+F (x: int) (y: int): bool =nu x > y;

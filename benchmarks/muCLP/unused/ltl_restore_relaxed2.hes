@@ -1,0 +1,11 @@
+LGnuq0 0
+s.t.
+LGnuq0 (x: int): bool =nu
+   (forall (x': int).
+      x = 0 /\ x' > 0 => (                                       //A break
+           (exists (x'': int). x'' = x' - 1 /\ LGmuq1 x''))        //E decr
+   );
+
+LGmuq1 (x: int): bool =mu                                          //A skip (implicitly)
+   (exists (x': int). x' = x - 1 /\ LGmuq1 x')                     //E decr
+    \/ x = 0 /\ LGnuq0 0;                                          //E restore

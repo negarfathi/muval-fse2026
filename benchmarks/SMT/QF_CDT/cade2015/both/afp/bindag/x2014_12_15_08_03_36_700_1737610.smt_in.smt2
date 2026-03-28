@@ -1,0 +1,10 @@
+; --full-saturate-quant --inst-when=full-last-call --inst-no-entail --term-db-mode=relevant --random-seed=1 --lang=smt2 --tlimit 427
+;(set-option :produce-unsat-cores true)
+(set-logic ALL_SUPPORTED)
+(declare-sort Ref$ 0)
+(declare-datatypes () ((Dag$ (tip$) (node$ (select$ Dag$) (selecta$ Ref$) (selectb$ Dag$)))))
+(declare-fun x$ () Dag$)
+(declare-fun less_eq$ (Dag$ Dag$) Bool)
+(assert (! (not (less_eq$ x$ x$)) :named a0))
+(check-sat)
+;(get-unsat-core)

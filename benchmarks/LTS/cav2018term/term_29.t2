@@ -1,0 +1,113 @@
+///*** 1_main ***///
+START: main_bb0;
+
+FROM: main_bb0;
+v0 := nondet();
+var__temp_vz.0 := 1;
+var__temp_vx.0 := 0;
+vz.0 := var__temp_vz.0;
+vx.0 := var__temp_vx.0;
+TO: main_bb1;
+
+FROM: main_bb1;
+TO: main_bb1_end;
+
+FROM: main_bb1_end;
+assume(vx.0 < v0);
+TO: main_bb2;
+
+FROM: main_bb1_end;
+assume(vx.0 >= v0);
+TO: main_bb7;
+
+FROM: main_bb2;
+v2 := nondet();
+var__temp_vz.4 := 0;
+var__temp_vy.3 := 5;
+vz.4 := var__temp_vz.4;
+vy.3 := var__temp_vy.3;
+TO: main_bb2_end;
+
+FROM: main_bb2_end;
+assume((v2 == 0) && (vz.0 == 1));
+TO: main_bb6;
+
+FROM: main_bb2_end;
+assume((v2 != 0) || (vz.0 != 1));
+TO: main_bb3;
+
+FROM: main_bb3;
+v5 := nondet();
+var__temp_vz.4 := 1;
+var__temp_vy.3 := -3;
+vz.4 := var__temp_vz.4;
+vy.3 := var__temp_vy.3;
+TO: main_bb3_end;
+
+FROM: main_bb3_end;
+assume((v5 == 0) && (vz.0 == 0));
+TO: main_bb6;
+
+FROM: main_bb3_end;
+assume((v5 != 0) || (vz.0 != 0));
+TO: main_bb4;
+
+FROM: main_bb4;
+v8 := nondet();
+var__temp_vz.4 := 0;
+var__temp_vy.3 := 7;
+vz.4 := var__temp_vz.4;
+vy.3 := var__temp_vy.3;
+TO: main_bb4_end;
+
+FROM: main_bb4_end;
+assume((v8 == 0) && (vz.0 == 1));
+TO: main_bb6;
+
+FROM: main_bb4_end;
+assume((v8 != 0) || (vz.0 != 1));
+TO: main_bb5;
+
+FROM: main_bb5;
+v11 := nondet();
+TO: main_bb5_vz.1;
+FROM: main_bb5_vz.1;
+assume((v11 == 0) && (vz.0 == 0));
+vz.1 := 1;
+TO: main_bb5_svz.1;
+
+FROM: main_bb5_vz.1;
+assume((v11 != 0) || (vz.0 != 0));
+vz.1 := vz.0;
+TO: main_bb5_svz.1;
+
+FROM: main_bb5_svz.1;
+TO: main_bb5_vy.0;
+FROM: main_bb5_vy.0;
+assume((v11 == 0) && (vz.0 == 0));
+vy.0 := -2;
+TO: main_bb5_svy.0;
+
+FROM: main_bb5_vy.0;
+assume((v11 != 0) || (vz.0 != 0));
+vy.0 := 1;
+TO: main_bb5_svy.0;
+
+FROM: main_bb5_svy.0;
+var__temp_vz.4 := vz.1;
+var__temp_vy.3 := vy.0;
+vz.4 := var__temp_vz.4;
+vy.3 := var__temp_vy.3;
+TO: main_bb6;
+
+FROM: main_bb6;
+v14 := vx.0 + vy.3;
+var__temp_vz.0 := vz.4;
+var__temp_vx.0 := v14;
+vz.0 := var__temp_vz.0;
+vx.0 := var__temp_vx.0;
+TO: main_bb1;
+
+FROM: main_bb7;
+TO: main_bb7_ret;
+

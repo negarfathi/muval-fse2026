@@ -1,0 +1,7 @@
+X 1.0 0.0 <= 1.0
+s.t.
+X (x : real) (k : real) : real =mu
+  if x >= 1.0 then
+    (x / (2.0 * x + 1.0)) * X (x - 1.0) k +
+    ((x + 1.0) / (2.0 * x + 1.0)) * X x (k + 1.0)
+  else k;

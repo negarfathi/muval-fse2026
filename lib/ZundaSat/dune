@@ -1,0 +1,8 @@
+(library
+ (name ZundaSat)
+ (public_name CoAR.ZundaSat)
+ (preprocess
+  (pps ppx_deriving_yojson))
+ (libraries minisat core ocamlgraph CoAR.SAT)
+ (modules config type vector newSolver data solver)
+ (synopsis "A SAT solver based on CDCL and SID"))

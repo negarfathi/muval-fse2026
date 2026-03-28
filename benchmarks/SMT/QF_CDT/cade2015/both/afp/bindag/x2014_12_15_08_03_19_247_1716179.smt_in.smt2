@@ -1,0 +1,11 @@
+; --full-saturate-quant --inst-when=full-last-call --inst-no-entail --term-db-mode=relevant --random-seed=1 --lang=smt2 --tlimit 1000
+;(set-option :produce-unsat-cores true)
+(set-logic ALL_SUPPORTED)
+(declare-sort Ref$ 0)
+(declare-datatypes () ((Dag$ (tip$) (node$ (select$ Dag$) (selecta$ Ref$) (selectb$ Dag$)))))
+(declare-fun a$ () Ref$)
+(declare-fun lt$ () Dag$)
+(declare-fun rt$ () Dag$)
+(assert (! (not (not (= lt$ (node$ lt$ a$ rt$)))) :named a0))
+(check-sat)
+;(get-unsat-core)

@@ -1,0 +1,33 @@
+///*** 1_main ***///
+START: 1;
+
+FROM: 1;
+TO: 2;
+FROM: 2;
+  kittel_old__v_call := v_call;
+  kittel_old__v_j.0 := v_j.0;
+  kittel_old__v_i.0 := v_i.0;
+  nondef.0 := nondet();
+  v_call := nondef.0;
+  v_j.0 := 1;
+  v_i.0 := 0;
+TO: 3;
+FROM: 3;
+  assume(v_j.0 < v_call);
+TO: 4;
+FROM: 3;
+  assume(v_j.0 > v_call);
+TO: 4;
+FROM: 3;
+  assume(v_j.0 == v_call);
+TO: 5;
+FROM: 4;
+  kittel_old__v_j.0 := v_j.0;
+  kittel_old__v_i.0 := v_i.0;
+  kittel_old__v_add := v_add;
+  v_j.0 := kittel_old__v_j.0 + kittel_old__v_i.0;
+  v_i.0 := kittel_old__v_j.0;
+  v_add := kittel_old__v_j.0 + kittel_old__v_i.0;
+TO: 3;
+FROM: 5;
+TO: 6;

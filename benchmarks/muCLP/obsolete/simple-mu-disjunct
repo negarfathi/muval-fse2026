@@ -1,0 +1,27 @@
+;; (mu X(x). x=0 or X(x-1))(n) \/ (mu X(x). x=0 or X(x+1))(n)
+(or
+ (atom (predapp
+        (mu X ((x int))
+	 (or
+	  (atom (predapp eq
+	          ((x int) (funapp (integer 0) ()))
+	  ))
+	  (atom (predapp
+	  	 (X (int))
+		 ((funapp add ((x int) (funapp (integer 1) ()))))
+	))))
+        ((n int))
+ ))
+ (atom (predapp
+        (mu X ((x int))
+         (or
+          (atom (predapp eq
+                 ((x int) (funapp (integer 0) ()))
+	  ))
+          (atom (predapp
+	         (X (int))
+                 ((funapp sub ((x int) (funapp (integer 1) ()))))
+	))))
+        ((n int))
+ )))
+

@@ -1,0 +1,18 @@
+[
+    "Mu2CHC",
+    {
+        "optimizer": [
+            "Filename",
+            "./config/muval/optimizer/enable.json"
+        ],
+        "qelim": {
+            "mode": [
+                "Nu",
+                100
+            ],
+            "verbose": false
+        },
+        "coe": null,
+        "verbose": false
+    }
+]

@@ -1,0 +1,4 @@
+X 1.0 1.0 >= 10000.0
+s.t.
+X (a : real) (b : real) : real =mu
+  if a = 1.0 then 0.5 * X 0.0 b + 0.5 * X a (2.0 * b) else b;

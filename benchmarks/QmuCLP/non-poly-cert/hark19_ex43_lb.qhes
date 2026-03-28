@@ -1,0 +1,7 @@
+X 0.0 1.0 >= 1.0
+s.t.
+X (x : real) (y : real) : real =mu
+  if x > 0.0 then
+    (1.0 / 3.0) * X (x - 1.0) (if y - 1.0 >= 0.0 then y - 1.0 else 0.0) +
+    (2.0 / 3.0) * X (x + 1.0) (if y - 1.0 >= 0.0 then y - 1.0 else 0.0)
+  else y;

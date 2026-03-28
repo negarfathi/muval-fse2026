@@ -1,0 +1,9 @@
+X 1.0 0.0 0.0 <= 0.99999999999
+s.t.
+X (start : real) (established : real) (probe : real) : real =mu
+  if start <= 1.0 and established <= 0.0 and probe <= 3.0 then
+    if start = 1.0 then
+      0.5 * X 0.0 established probe + 0.5 * X 0.0 1.0 probe
+    else
+      0.001 * X start established (probe + 1.0) + 0.999 * X 1.0 established 0.0
+  else if established = 1.0 then 1.0 else 0.0;

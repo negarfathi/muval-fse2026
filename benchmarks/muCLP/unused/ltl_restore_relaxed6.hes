@@ -1,0 +1,12 @@
+LGnuq0 (x)
+s.t.
+LGnuq0 (x: int): bool =nu
+   (forall (x': int).
+      (x != 0 \/ x' = 0 \/ LGmuq1 x')      //A break
+      /\ (x = 0  \/ x != x' \/ LGmuq1 x')  //A skip
+   );
+
+LGmuq1 (x: int): bool =mu            //A skip (implicitly)
+   LGmuq1 (x - 1)                    //E decr
+   \/ LGmuq1 (x + 1)                 //E incr
+   \/ x = 0 /\ LGnuq0 x;             //E restore

@@ -1,0 +1,8 @@
+/*forall (x: int). F x
+s.t.
+F (x: int): bool =nu exists (r: int). (G x r /\ F r);
+G (x: int) (r: int): bool =mu (x >= 0 /\ G (x - 1) r) \/ (x < 0 /\ r = 5);
+*/
+forall (x : int). exists (r : int). G x r
+s.t.
+G (x: int) (r: int): bool =mu (x>=0 /\ G (x-1) r) \/ (x<0 /\ r=5);

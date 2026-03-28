@@ -1,0 +1,55 @@
+///*** 1_main ***///
+START: main_bb0;
+
+FROM: main_bb0;
+v0 := nondet();
+v1 := nondet();
+TO: main_bb0_end;
+
+FROM: main_bb0_end;
+assume((0 <= v0) && (v0 < v1));
+TO: main_bb1;
+
+FROM: main_bb0_end;
+assume((0 > v0) || (v0 >= v1));
+TO: main_bb4;
+
+FROM: main_bb1;
+v4 := v0 + 1;
+var__temp_vtmp.0 := v4;
+vtmp.0 := var__temp_vtmp.0;
+TO: main_bb2;
+
+FROM: main_bb2;
+TO: main_bb2_end;
+
+FROM: main_bb2_end;
+assume(vtmp.0 != v0);
+TO: main_bb3;
+
+FROM: main_bb2_end;
+assume(vtmp.0 == v0);
+TO: main_bb4;
+
+FROM: main_bb3;
+v7 := vtmp.0 + 1;
+v8 := 0 - vtmp.0;
+TO: main_bb3_vtmp.1;
+FROM: main_bb3_vtmp.1;
+assume(vtmp.0 <= v1);
+vtmp.1 := v7;
+TO: main_bb3_svtmp.1;
+
+FROM: main_bb3_vtmp.1;
+assume(vtmp.0 > v1);
+vtmp.1 := v8;
+TO: main_bb3_svtmp.1;
+
+FROM: main_bb3_svtmp.1;
+var__temp_vtmp.0 := vtmp.1;
+vtmp.0 := var__temp_vtmp.0;
+TO: main_bb2;
+
+FROM: main_bb4;
+TO: main_bb4_ret;
+

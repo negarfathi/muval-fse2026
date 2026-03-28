@@ -1,0 +1,14 @@
+[
+    "ZundaSmt",
+    {
+        "verbose": true,
+        "mip_solver" :[
+            "Filename",
+            "./config/solver/mip_gurobi_default.json"
+        ],
+        "sat_solver": [
+            "Filename",
+            "./config/solver/dbg_minisat.json"
+        ]
+    }
+]

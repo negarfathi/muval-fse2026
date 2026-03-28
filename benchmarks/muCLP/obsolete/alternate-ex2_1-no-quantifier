@@ -1,0 +1,22 @@
+;; valid
+
+(atom (predapp
+  (nu F ((x int))
+    (and
+      (atom (predapp
+        (mu G ((x int) (r int))
+          (or
+            (and
+              (atom (predapp lt ((x int) (funapp (integer 0) ()))))
+              (atom (predapp eq ((r int) (funapp (integer 5) ()))))
+            )
+            (atom (predapp (G (int int)) ((funapp sub ((x int) (funapp (integer 1) ()))) (r int))))
+          )
+        )
+        ((x int) (funapp (integer 5) ()))
+      ))
+      (atom (predapp (F (int)) ((funapp (integer 5) ()))))
+    )
+  )
+  ((n int))
+))

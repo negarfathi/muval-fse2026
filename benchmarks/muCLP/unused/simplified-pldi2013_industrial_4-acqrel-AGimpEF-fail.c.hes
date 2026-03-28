@@ -1,0 +1,5 @@
+exists (n: int). (EF6 n)
+s.t.
+EF6 (n: int): bool =mu n > 0 /\ EF7 n;
+EF7 (n: int): bool =mu (n > 0) => EF10 n;
+EF10 (n: int): bool =mu EF7 n;

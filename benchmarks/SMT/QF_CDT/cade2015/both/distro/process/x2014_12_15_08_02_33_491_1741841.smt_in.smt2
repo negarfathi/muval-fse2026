@@ -1,0 +1,11 @@
+; --full-saturate-quant --inst-when=full-last-call --inst-no-entail --term-db-mode=relevant --random-seed=1 --lang=smt2 --tlimit 320
+;(set-option :produce-unsat-cores true)
+(set-logic ALL_SUPPORTED)
+(declare-sort A$ 0)
+(declare-codatatypes () ((A_process$ (action$ (prefOf$ A$) (contOf$ A_process$)) (choice$ (ch1Of$ A_process$) (ch2Of$ A_process$)))))
+(declare-fun p$ () A_process$)
+(declare-fun isAction$ (A_process$) Bool)
+(declare-fun isChoice$ (A_process$) Bool)
+(assert (! (not (not (and (isAction$ p$) (isChoice$ p$)))) :named a0))
+(check-sat)
+;(get-unsat-core)

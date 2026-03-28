@@ -1,0 +1,22 @@
+{
+    "version":          [0,4,0],
+    "mode":             "run",
+    "bench list":       ["benchmarks/pcsat_rl/test/*"],
+    "log directry":     "./eval_logs/",
+    "number of epochs": 1,
+    "agent": {
+        "kind":             "A2C",
+        "state abstraction": "tensor",
+        "input dir":        "./paper_models/",
+        "output dir":       null,
+        "learn":            false,
+        "alpha":            5e-5,
+        "epsilon":          0.05,
+        "gamma":            0.99
+    },
+    "prover": {
+        "command":  ["./_build/default/main.exe", "-c", "./config/solver/pcsat_rl_flex.json", "-p", "sygus"],
+        "timeout":  600.0
+    },
+    "auto restart":     null
+}

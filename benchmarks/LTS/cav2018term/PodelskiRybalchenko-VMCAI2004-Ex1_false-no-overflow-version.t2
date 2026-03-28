@@ -1,0 +1,108 @@
+///*** 1_main ***///
+START: main_bb0;
+
+FROM: main_bb0;
+v0 := nondet();
+v1 := nondet();
+v2 := nondet();
+v3 := nondet();
+var__temp_vj1.0 := v3;
+var__temp_vi1.0 := v2;
+var__temp_vj.0 := v1;
+var__temp_vi.0 := v0;
+vj1.0 := var__temp_vj1.0;
+vi1.0 := var__temp_vi1.0;
+vj.0 := var__temp_vj.0;
+vi.0 := var__temp_vi.0;
+TO: main_bb1;
+
+FROM: main_bb1;
+v4 := vi.0 + vi1.0;
+v5 := v4 - vj.0;
+v6 := v5 - vj1.0;
+TO: main_bb1_end;
+
+FROM: main_bb1_end;
+assume(v6 >= 1);
+TO: main_bb2;
+
+FROM: main_bb1_end;
+assume(v6 < 1);
+TO: main_bb3;
+
+FROM: main_bb2;
+v8 := nondet();
+v10 := 0 - v8;
+TO: main_bb2_v.;
+FROM: main_bb2_v.;
+assume(v8 < 0);
+v. := v10;
+TO: main_bb2_sv.;
+
+FROM: main_bb2_v.;
+assume(v8 >= 0);
+v. := v8;
+TO: main_bb2_sv.;
+
+FROM: main_bb2_sv.;
+v11 := vi.0 - v.;
+v12 := nondet();
+v14 := 0 - v12;
+TO: main_bb2_vnondetPos.0;
+FROM: main_bb2_vnondetPos.0;
+assume(v12 < 0);
+vnondetPos.0 := v14;
+TO: main_bb2_svnondetPos.0;
+
+FROM: main_bb2_vnondetPos.0;
+assume(v12 >= 0);
+vnondetPos.0 := v12;
+TO: main_bb2_svnondetPos.0;
+
+FROM: main_bb2_svnondetPos.0;
+v15 := vnondetPos.0 + 1;
+v16 := vj.0 + v15;
+v17 := nondet();
+v19 := 0 - v17;
+TO: main_bb2_v.1;
+FROM: main_bb2_v.1;
+assume(v17 < 0);
+v.1 := v19;
+TO: main_bb2_sv.1;
+
+FROM: main_bb2_v.1;
+assume(v17 >= 0);
+v.1 := v17;
+TO: main_bb2_sv.1;
+
+FROM: main_bb2_sv.1;
+v20 := vi1.0 - v.1;
+v21 := nondet();
+v23 := 0 - v21;
+TO: main_bb2_vnondetPos1.0;
+FROM: main_bb2_vnondetPos1.0;
+assume(v21 < 0);
+vnondetPos1.0 := v23;
+TO: main_bb2_svnondetPos1.0;
+
+FROM: main_bb2_vnondetPos1.0;
+assume(v21 >= 0);
+vnondetPos1.0 := v21;
+TO: main_bb2_svnondetPos1.0;
+
+FROM: main_bb2_svnondetPos1.0;
+v24 := vnondetPos1.0 + 1;
+v25 := vj1.0 + v24;
+var__temp_vj1.0 := v25;
+var__temp_vi1.0 := v20;
+var__temp_vj.0 := v16;
+var__temp_vi.0 := v11;
+vj1.0 := var__temp_vj1.0;
+vi1.0 := var__temp_vi1.0;
+vj.0 := var__temp_vj.0;
+vi.0 := var__temp_vi.0;
+TO: main_bb1;
+
+FROM: main_bb3;
+TO: main_bb3_ret;
+

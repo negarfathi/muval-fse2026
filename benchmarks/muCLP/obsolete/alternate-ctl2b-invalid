@@ -1,0 +1,56 @@
+;; invalid
+
+;; There exists an infinite path A occurs infinitely but B doesn't occur infinitely in the graph:
+;;
+;; v1 -[B, -3]-> v2
+;; v2 -[A, +1]-> v3
+;; v3 -[A, +1]-> v1
+;; v1 -[A, +1, n<=0]-> v4
+;; v4 -[A, -5, n=0]-> v3
+;; v4 -[A, +1]-> v2
+
+;; forall n. E12 n
+;; E12 n =mu V2 n
+;; V2 n =nu V3 (n + 1)
+;; V3 n =nu V1 (n + 1)
+;; V1 n =nu (n <= 0 /\ V4 (n + 1)) \/ E12 (n - 3)
+;; V4 n =nu (n = 0 /\ V3 (n - 5)) \/ V2 (n + 1)
+
+(atom (predapp
+  (mu E12 ((n int))
+    (atom (predapp
+      (nu V2 ((n int))
+        (atom (predapp
+          (nu V3 ((n int))
+            (atom (predapp
+              (nu V1 ((n int))
+                (or
+                  (and
+                    (atom (predapp leq ((n int) (funapp (integer 0) ()))))
+                    (atom (predapp
+                      (nu V4 ((n int))
+                        (or
+                          (and
+                            (atom (predapp eq ((n int) (funapp (integer 0) ()))))
+                            (atom (predapp (V3 (int)) ((funapp sub ((n int) (funapp (integer 5) ()))))))
+                          )
+                          (atom (predapp (V2 (int)) ((funapp add ((n int) (funapp (integer 1) ()))))))
+                        )
+                      )
+                      ((funapp add ((n int) (funapp (integer 1) ()))))
+                    ))
+                  )
+                  (atom (predapp (E12 (int)) ((funapp sub ((n int) (funapp (integer 3) ()))))))
+                )
+              )
+              ((funapp add ((n int) (funapp (integer 1) ()))))
+            ))
+          )
+          ((funapp add ((n int) (funapp (integer 1) ()))))
+        ))
+      )
+      ((n int))
+    ))
+  )
+  ((n int))
+))

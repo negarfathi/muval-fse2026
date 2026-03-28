@@ -1,0 +1,43 @@
+;; invalid
+
+;; 'A' occurs infinitely in g x for all x >= 0
+;; where g is defined below:
+;;
+;; let f x = if x = 0 then 3 else f (x - 3) in
+;; let g x =
+;;   if x >= 0 then
+;;     A; let a = f x in g (x + a)
+;; in
+
+;; forall x. x >= 0 => G x
+;; G x =nu x >= 0 /\ F x
+;; F x =mu (x = 0 /\ G 3) \/ (x != 0 /\ F (x - 3))
+
+(imply
+  (atom (predapp geq ((x int) (funapp (integer 0) ()))))
+  (atom (predapp
+    (nu G ((x int))
+      (and
+        (atom (predapp geq ((x int) (funapp (integer 0) ()))))
+        (atom (predapp
+          (mu F ((x int))
+            (or
+              (and
+                (atom (predapp eq ((x int) (funapp (integer 0) ()))))
+                (atom (predapp (G (int)) ((funapp (integer 3) ()))))
+              )
+              (and
+                (atom (predapp neq ((x int) (funapp (integer 0) ()))))
+                (atom (predapp (F (int)) (
+                  (funapp sub ((x int) (funapp (integer 3) ())))
+                )))
+              )
+            )
+          )
+          ((x int))
+        ))
+      )
+    )
+    ((n int))
+  ))
+)

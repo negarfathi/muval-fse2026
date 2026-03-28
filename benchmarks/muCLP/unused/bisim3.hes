@@ -1,0 +1,7 @@
+forall (x1: int) (y1: int) (x2: int) (y2: int). y1-x1 = y2-x2 \/ Bneg x1 y1 x2 y2
+s.t.
+Bneg (x1: int) (y1: int) (x2: int) (y2: int): bool =mu
+  x1 + 1 <= y1 /\ (x2 + 1 > y2 \/ Bneg (x1+1) y1 (x2+1) y2) \/
+  x2 + 1 <= y2 /\ (x1 + 1 > y1 \/ Bneg (x1+1) y1 (x2+1) y2) \/
+  x1 - 1 >= y1 /\ (x2 - 1 < y2 \/ Bneg (x1-1) y1 (x2-1) y2) \/
+  x2 - 1 >= y2 /\ (x1 - 1 < y1 \/ Bneg (x1-1) y1 (x2-1) y2);

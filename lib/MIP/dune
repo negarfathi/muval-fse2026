@@ -1,0 +1,7 @@
+(library
+ (name MIP)
+ (public_name CoAR.MIP)
+ (preprocess
+  (pps ppx_deriving_yojson))
+ (libraries core lp lp-glpk lp-gurobi CoAR.ast CoAR.common)
+ (modules problem))

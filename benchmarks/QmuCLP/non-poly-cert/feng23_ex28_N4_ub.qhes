@@ -1,0 +1,6 @@
+XT 0.0 <= 0.99999999999
+s.t.
+XT (probe : real) : real =mu
+  if probe <= 3.0 then 0.5 * XF probe + 0.5 * 1.0 else 0.0;
+XF (probe : real) : real =mu
+  if probe <= 3.0 then 0.001 * XF (probe + 1.0) + 0.999 * XT 0.0 else 0.0;

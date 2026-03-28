@@ -1,0 +1,4 @@
+forall (x: int). X x
+s.t.
+Y (x: int) : bool =mu X x \/ Y x;
+X (x: int) : bool =nu X x /\ Y x;
